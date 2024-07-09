@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Sidebar from './components/Sidebar';
+import Middle from './components/Middle';
+import Last from './components/Last';
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import CreateCustomer from './pages/CreateCustomer';
+import {Routes, Route} from 'react-router-dom';
+import CustomerDash from './pages/CustomerDash';
+
 
 function App() {
+ 
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="d-flex flex-grow-1" style={{marginTop:"10px"}}>
+     <Sidebar/>
+     <Routes>
+     <Route path="/create-customer" element={<CreateCustomer/>}/>
+     <Route path='/dashboard-customer' element={<CustomerDash/>}/>
+     </Routes>
+    
+    
+   
     </div>
   );
 }
