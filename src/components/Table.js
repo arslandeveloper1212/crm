@@ -1,4 +1,4 @@
-// Table.js
+
 import React from 'react';
 
 const Table = ({ items }) => {

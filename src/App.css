@@ -6,13 +6,16 @@
 
 
 .custom-width-middle{
-  width: 65%;
+  width: 100%;
+  max-width: 1142px !important;
+  
  
 }
 
 .custom-width-last{
-  width:15%;
-  border: 1px solid red;
+  width: 100%;
+ 
+  max-width: 434px !important;
 }
 
 .name-side{
@@ -36,7 +39,7 @@ color: #008767 !important;
 background-color: #16C098 !important;
 border:1px solid  #008767 !important;
 padding: 4px 12px;
-border-radius:10px;
+border-radius:20px !important;
 
 }
 
@@ -45,7 +48,7 @@ border-radius:10px;
   background-color: #c01616 !important;
   border:1px solid  #870000 !important;
   padding: 4px 12px;
-  border-radius:10px;
+  border-radius:20px !important;
 }
 
 
@@ -75,6 +78,11 @@ border-radius:10px;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+}
+
+.drag-area h3{
+  color: #D3D3D3;
 }
 
 .drag-over {
@@ -92,7 +100,38 @@ border-radius:10px;
   color: var(--dark-grey);
   padding: 8px 16px !important;
   border-radius: 15px;
+  font-size: 16px;
 }
+
+.btn-grey-padding{
+  border: none;
+  color: var(--dark-grey);
+  padding: 4px 7px !important;
+  border-radius: 15px;
+  font-size: 16px;
+  background-color: #d9d9d9;
+}
+
+.cust-name h3{
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.cust-name span{
+  font-size: 14px;
+}
+
+.font-given-14{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.font-given-16{
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
 
 @media screen and (max-width:992px) {
   

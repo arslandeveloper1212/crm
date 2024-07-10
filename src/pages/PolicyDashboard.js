@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import Table from '../components/Table';
+
 
 import Pagination from '../components/Pagination';
-const CustomerDash = ({ items }) => {
+import PolicyTable from '../components/PolicyTable';
+const PolicyDashboard = ({ itemspolicy }) => {
 
 
     const data = Array.from({ length: 50 }, (_, index) => ({ id: index + 1, title: `Item ${index + 1}` }));
-  const itemsPerPage = 5; // Number of items to display per page
+  const itemsPerPage = 5; 
     
-    const [sortedItems, setSortedItems] = useState(items || []);
-    const [sortOption, setSortOption] = useState('newest');
+    const [sortedItems, setSortedItems] = useState(itemspolicy || []);
+    const [sortOption, setSortOption] = useState('Company');
 
-    const sortByNewest = () => {
+    const sortByCompany = () => {
         const sorted = [...sortedItems].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setSortedItems(sorted);
-        setSortOption('newest');
+        setSortOption('Company');
     };
 
     // You can add more sorting options here as needed
@@ -27,38 +28,39 @@ const CustomerDash = ({ items }) => {
     return (
         <div className="custom-width-middle padding-given">
             <div className="row justify-content-between d-flex" style={{margin: "18px 0px"}}>
-                <h1 className='main-heading'>Customer Dashboard</h1>
-                <span>Manage Client Data</span>
+                <h1 className='main-heading'>Policy Dashboard</h1>
+                <span>Manage Policy Data</span>
             </div>
             <div className='row'>
                 <div className='col-lg-6 col-md-6 col-12'>
                     <form className="d-flex">
                         <input style={{ borderRadius: "15px", padding: "8px 16px" }} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        {/* Add a search button if needed */}
-                        {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+                      
                     </form>
                 </div>
                 <div className='col-lg-6 col-md-6 col-12' style={{ display: "flex", justifyContent: "end" }}>
                     <div className="dropdown mb-3">
                         <button style={{ border: "none", padding: "8px 16px", borderRadius: "15px" }} className=" dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort by: {sortOption === 'newest' ? 'Newest' : 'Oldest'}
+                            Sort by: {sortOption === 'Company' ? 'Company' : 'Oldest'}
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><button className="dropdown-item" onClick={sortByNewest}>Newest</button></li>
-                            {/* Add more sorting options as needed */}
-                            {/* <li><button className="dropdown-item" onClick={sortByOldest}>Oldest</button></li> */}
+                            <li><button className="dropdown-item" onClick={sortByCompany}>Company</button></li>
+                          
                         </ul>
                     </div>
                     <ul className="list-group">
-                        {sortedItems.map(item => (
-                            <li key={item.id} className="list-group-item">
-                                {item.title}
+                        {sortedItems.map(itempolicy => (
+                        
+                            <li key={itempolicy.id} className="list-group-item">
+                                {itempolicy.PolicyName}
                             </li>
+
+                           
                         ))}
                     </ul>
                 </div>
-              
-                <Pagination data={data} itemsPerPage={itemsPerPage} />
+                <PolicyTable/>
+                 <Pagination data={data} itemsPerPage={itemsPerPage} />
             </div>
           
             
@@ -68,4 +70,4 @@ const CustomerDash = ({ items }) => {
     );
 };
 
-export default CustomerDash;
+export default PolicyDashboard;
