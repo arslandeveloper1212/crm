@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PolicyJson from '../JsonFolder.js/Policy.json'; // Import JSON data
-import PolicyTable from './PolicyTable';
+
 
 
 const itemsPerPage = 5; // Number of items to display per page
 
 const Pagination = () => {
-  const [data, setData] = useState([]);
+  const [datas, setData] = useState([]);
   console.log(data)
   const [currentPage, setCurrentPage] = useState(1); // For PolicyTable component
   console.log(currentPage)
@@ -18,7 +18,7 @@ const Pagination = () => {
   }, []);
 
   useEffect(() => {
-    if (!Array.isArray(data) || data.length === 0) {
+    if (!Array.isArray(datas) || datas.length === 0) {
       // Handle case where data is not an array or empty
       setCurrentPolicy([]);
       return;
@@ -27,10 +27,10 @@ const Pagination = () => {
     // Calculate pagination for PolicyTable component
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    setCurrentPolicy(data.slice(startIndex, endIndex));
-  }, [currentPage, data]);
+    setCurrentPolicy(datas.slice(startIndex, endIndex));
+  }, [currentPage, datas]);
 
-  const totalPages = Math.ceil(data.length / itemsPerPage); // Total pages for PolicyTable component
+  const totalPages = Math.ceil(datas.length / itemsPerPage); // Total pages for PolicyTable component
 
   const handlePageClick = (page) => {
     setCurrentPage(page);
