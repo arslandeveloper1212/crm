@@ -1,66 +1,68 @@
 const data = {
-    top: {
-      logo: {
-        leftText: "Broker",
-        rightText: "Unknown",
-         link: "https://example.com/logo.png"
-      }
-    },
-  
-    home: {
-      folders: [
-        {
-          
-          children:[
-            {name: "Home"},
-          ]
-        },
-        {
-          name: "Client Management",
-          children: [
-            { name: "Clients" },
-            { name: "Manage Client" }
-          ]
-        },
-        {
-          name: "Policy Management",
-          children: [
-            { name: "Policies" },
-            { name: "Manage Policy" }
-          ]
-        },
-        {
-          name: "Billing Management",
-          children: [
-            { name: "Billing history" },
-            { name: "Manage Invoice" }
-          ]
-        },
-        {
-          name: "Support & Communication",
-          children: [
-            { name: "Support ticket" },
-            { name: "Knowledge Base" },
-            { name: "FAQ" }
-          ]
-        },
-        {
-          name: "Audit & Log Management",
-          children: [
-            { name: "Activity Log" }
-          ]
-        },
-        {
-          name: "Others",
-          children: [
-            { name: "Notification" },
-            { name: "How to use" },
-            { name: "Logout" }
-          ]
-        }
-      ]
+  top: {
+    logo: {
+      leftText: "Broker",
+      rightText: "Unknown",
+      link: "https://example.com/logo.png"
     }
-  };
-  
-  export default data;
-  
+  },
+
+  home: {
+    folders: [
+      {
+
+        children:[
+          {
+            name: "Home",
+            link: "/" // Link to the home page
+          }
+        ]
+       
+      },
+      {
+        name: "Client Management",
+        children: [
+          { name: "Manage Client", link: "/dashboard-customer" }
+        ]
+      },
+      {
+        name: "Policy Management",
+        children: [
+          { name: "Policies", link: "/policy-dashboard" },
+          { name: "Manage Policy", link: "/manage-policy" }
+        ]
+      },
+      {
+        name: "Billing Management",
+        children: [
+          { name: "Billing history", link: "/billing-dashboard" },
+          { name: "Manage Invoice", link: "#" }
+        ]
+      },
+      {
+        name: "Support & Communication",
+        children: [
+          { name: "Support ticket", link: "/support-dashboard" },
+          { name: "Knowledge Base", link: "/knowledge-base-faq" },
+          { name: "FAQ", link: "/knowledge-base-accordion" }
+        ]
+      },
+      {
+        name: "Audit & Log Management",
+        children: [
+          { name: "Activity Log", link: "/activity-log" }
+        ]
+      },
+      {
+        name: "Others",
+        children: [
+          { name: "Notification", link: "#" },
+          { name: "How to use", link: "/create-customer" },
+          { name: "Logout", link: "#" }
+        ]
+      }
+    ]
+  }
+};
+
+export default data;
