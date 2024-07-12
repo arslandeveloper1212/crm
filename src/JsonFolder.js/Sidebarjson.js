@@ -20,27 +20,27 @@ const data = {
        
       },
       {
-        name: "Client Management",
+        // name: "Client Management",
         children: [
           { name: "Manage Client", link: "/dashboard-customer" }
         ]
       },
       {
-        name: "Policy Management",
+        // name: "Policy Management",
         children: [
           { name: "Policies", link: "/policy-dashboard" },
           // { name: "Manage Policy", link: "/manage-policy" }
         ]
       },
       {
-        name: "Billing Management",
+        // name: "Billing Management",
         children: [
           { name: "Billing history", link: "/billing-dashboard" },
           // { name: "Manage Invoice", link: "#" }
         ]
       },
       {
-        name: "Support & Communication",
+        // name: "Support & Communication",
         children: [
           { name: "Support ticket", link: "/support-dashboard" },
           { name: "Knowledge Base", link: "/knowledge-base-faq" },
@@ -48,13 +48,13 @@ const data = {
         ]
       },
       {
-        name: "Audit & Log Management",
+        // name: "Audit & Log Management",
         children: [
           { name: "Activity Log", link: "/activity-log" }
         ]
       },
       {
-        name: "Others",
+        // name: "Others",
         children: [
           { name: "Notification", link: "#" },
           { name: "How to use", link: "/create-customer" },
