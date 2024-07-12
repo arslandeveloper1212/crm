@@ -29,14 +29,14 @@ const data = {
         name: "Policy Management",
         children: [
           { name: "Policies", link: "/policy-dashboard" },
-          { name: "Manage Policy", link: "/manage-policy" }
+          // { name: "Manage Policy", link: "/manage-policy" }
         ]
       },
       {
         name: "Billing Management",
         children: [
           { name: "Billing history", link: "/billing-dashboard" },
-          { name: "Manage Invoice", link: "#" }
+          // { name: "Manage Invoice", link: "#" }
         ]
       },
       {
