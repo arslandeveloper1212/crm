@@ -133,6 +133,23 @@ border-radius:20px !important;
 
 }
 
+.button-padding {
+  padding: 5px 10px;
+  margin-right: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 15px;
+}
+.buttonPressed{
+ padding: 5px 10px;
+  margin-right: 10px;
+  background-color: #cccccc;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
 
 @media screen and (max-width:992px) {
   

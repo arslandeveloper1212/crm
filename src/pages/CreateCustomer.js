@@ -1,8 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../src/App.css';
+import NationalityDrop from '../components/NationalityDrop';
+import CountryDrop from '../components/CountryDrop';
+
+
+const BUTTONS = [
+  { id: 1, title: 'Inpatient', selected: false },
+  { id: 2, title: 'Outpatient', selected: false },
+  { id: 3, title: 'Dental', selected: false },
+  { id: 4, title: 'Maternity', selected: false },
+];
+
 
 const CreateCustomer = () => {
-  
+
+
+  const [policyType, setPolicyType] = useState('individual');
+
+  const handlePolicyTypeChange = (e) => {
+    setPolicyType(e.target.value);
+  };
+
+  const [buttons, setButtons] = useState(BUTTONS);
+  console.log(buttons)
+
+  const handleButton = (buttonId, e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    const newButtons = buttons.map((btn) => {
+      if (btn.id !== buttonId) return btn;
+      return { ...btn, selected: !btn.selected }; // Create a new object with updated selected value
+    });
+    setButtons(newButtons);
+  };
+
+
   useEffect(() => {
     initializeDragAndDrop("dragArea1", "fileInput1", "fileList1", "browseFilesBtn1");
     initializeDragAndDrop("dragArea2", "fileInput2", "fileList2", "browseFilesBtn2");
@@ -68,92 +99,191 @@ const CreateCustomer = () => {
                     <label htmlFor="name" className="form-label heading-color">Name</label>
                     <input type="text" className="form-control" />
                   </div>
+                  <div className='mb-3'>
+                    <NationalityDrop className="form-control" />
+                  </div>
                   <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label heading-color">Email </label>
                     <input type="email" className="form-control" />
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                   </div>
+
                   <div className="mb-3">
-                    <span>Requirements</span>
-                    <div>
-                      <button className='button-padding'>Inpatient</button>
-                      <button className='button-padding'>Outpatient</button>
-                      <button className='button-padding'>Dental</button>
-                      <button className='button-padding'>Maternity</button>
+                    <label htmlFor="contact" className="form-label heading-color">Contact Number</label>
+                    <input type="number" className="form-control" />
+                  </div>
+
+                  <div className="mb-3">
+                    <label htmlFor="date" className="form-label heading-color">Date of Birth</label>
+                    <input type="date" className="form-control" />
+                  </div>
+
+                  <div className='mb-3'>
+                    <div className="form-group">
+                      <label htmlFor="select-genter" className="form-label">Sex</label>
+                      <select id="select-genter" name="select-genter" className="form-select">
+
+                        <option value="worldwide">Male</option>
+                        <option value="notUSA">Female</option>
+
+                      </select>
                     </div>
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="address" className="form-label heading-color">Address </label>
-                    <input type="text" className="form-control" />
+
+                  <div className='mb-3'>
+                    <CountryDrop className="form-control" />
                   </div>
-                  <div className="mb-3">
-                    <label htmlFor="nationality" className="form-label heading-color">Nationality </label>
-                    <input type="text" className="form-control" />
+
+
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                   </div>
+
+
+
                   <div className="mb-3">
-                    <div className="drag-area" id="dragArea1">
-                      <h3 id="browseFilesBtn1">Drop files to upload</h3>
-                      <input type="file" id="fileInput1" multiple style={{ display: "none" }} />
+                    <span>Plan Modules</span>
+
+                    <div >
+                      {buttons.map((bt) => (
+                        <button
+                          key={bt.id}
+                          onClick={(e) => handleButton(bt.id, e)}
+                          className={bt.selected ? 'buttonPressed' : 'button-padding'}
+                        >
+                          {bt.title}
+                        </button>
+
+                      ))}
                     </div>
-                    <div id="fileList1" className="mt-3"></div>
+
                   </div>
-                  <div className="row">
-                    <div className="mb-3">
-                      <label htmlFor="policy" className="form-label heading-color">Policy</label>
-                      <input type="text" className="form-control" />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="insurance" className="form-label heading-color">Insurer</label>
-                      <input type="text" className="form-control" />
-                    </div>
-                    <div className="mb-3">
-                      <div className="alert alert-primary">
-                        <label htmlFor="currency" className="form-label heading-color">Currency:</label>
-                        <select id="currency" className="form-control">
-                          <option value="$">$ USD</option>
-                          <option value="£">£ Pound</option>
-                          <option value="€">€ Euro</option>
-                          <option value="₹">₹ Rupee</option>
+
+
+
+                  <div className='col-12'>
+                    <div className='mb-3'>
+                      <div className="form-group">
+                        <label htmlFor="policy-type" className="form-label">Policy Type</label>
+                        <select
+                          id="policy-type"
+                          name="policy-type"
+                          className="form-select"
+                          value={policyType}
+                          onChange={handlePolicyTypeChange}
+                          style={{ marginBottom: "20px" }}
+                        >
+                          <option value="individual">Individual</option>
+                          <option value="couple">Couple</option>
+                          <option value="family">Family</option>
+                          <option value="group">Group</option>
                         </select>
+
+                        {/* Conditional rendering based on policy type */}
+
+                        {policyType === 'couple' || policyType === 'family' || policyType === 'group' ? (
+                          <div>
+                            <div style={{ width: "1320px", marginTop: "10px" }}>
+                              <div style={{display: "flex", alignItems: "center", gap: "20px", justifyContent: "space-between"}}>
+                            <div className='mb-3 ' >
+                                <label style={{ marginBottom: "8px" }} htmlFor="name">Name:</label>
+                                <input className='form-control' type="text" id="name" name="name" />
+                              </div>
+
+
+
+                              <div className="form-group mb-3">
+                                <label htmlFor="relationship" className="form-label">Relationship</label>
+                                <select id="relationship" name="relationship" className="form-select">
+
+                                  <option value="worldwide">Wife</option>
+                                  <option value="notUSA">Partner</option>
+                                  <option value="worldwide">Child</option>
+                                  <option value="notUSA">Employee</option>
+
+                                </select>
+                              </div>
+
+
+
+
+                              <div className='mb-3'>
+                                <NationalityDrop className="form-control" />
+                              </div>
+
+                              <div className='mb-3'>
+                                <label style={{ marginBottom: "8px" }} htmlFor="date-of-birth">Date of Birth:</label>
+                                <input className='form-control' type="date" id="date-of-birth" name="date-of-birth" />
+                              </div>
+                              </div>
+                              <div style={{textAlign:"end"}}>
+                                <button class="btn-grey mb-0" >Add More</button>
+                              </div>
+                            </div>
+
+
+                          </div>
+                        ) : null}
+
+
                       </div>
+
+
+
                     </div>
-                    <div className="mb-3">
-                      <label htmlFor="premiumFrequency" className="form-label heading-color">Premium Frequency</label>
-                      <input type="text" className="form-control" id="premiumFrequency" />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="premiumAmount" className="form-label heading-color">Premium Amount</label>
-                      <input type="text" className="form-control" id="premiumAmount" />
-                    </div>
+
                   </div>
+
+
+
+
+
+
+
+
+
+
                 </div>
-                <div className="col-md-6 col-lg-6 col-12">
+
+
+
+
+                <div className="col-md-6 col-lg-6 col-12" style={{ zIndex: "-1" }}>
                   <div className="justify-content-center">
                     <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
-                      className="img-fluid w-30%" style={{ display: "flex", margin: "auto" }} alt="Profile" />
+                      className="img-fluid w-10%" style={{ display: "flex", margin: "auto", width: "33%" }} alt="Profile" />
                   </div>
                   <div className="mb-3">
                     <input type="file" className="form-control" />
                   </div>
-                  <div className="row" style={{ marginTop: "180px" }}>
+                  <div className="row" >
                     <div className="container mt-5">
                       <div className="mb-3">
                         <div className="form-group">
-                          <label htmlFor="startDate" className="heading-color">Start Date</label>
-                          <input type="date" className="form-control datepicker" id="startDate"
-                            placeholder="Select start date" />
+                          <label htmlFor="startDate" className="heading-color">Verified ID</label>
+                          <div className="drag-area" id="dragArea2">
+                            <h3 id="browseFilesBtn3">Drop files to upload</h3>
+                            <input type="file" id="fileInput3" multiple style={{ display: "none" }} />
+                          </div>
+                          <div id="fileList2" className="mt-3"></div>
                         </div>
                       </div>
                       <div className="mb-3">
                         <div className="form-group">
-                          <label htmlFor="endDate" className="heading-color">End Date</label>
-                          <input type="date" className="form-control datepicker" id="endDate"
-                            placeholder="Select end date" />
+                          <label htmlFor="startDate" className="heading-color">Proof Of Address</label>
+                          <div className="drag-area" id="dragArea2">
+                            <h3 id="browseFilesBtn3">Drop files to upload</h3>
+                            <input type="file" id="fileInput3" multiple style={{ display: "none" }} />
+                          </div>
+                          <div id="fileList2" className="mt-3"></div>
                         </div>
                       </div>
                     </div>
                     <div className="mb-3">
+                      <label htmlFor="startDate" className="heading-color">Other Documents</label>
                       <div className="drag-area" id="dragArea2">
+
                         <h3 id="browseFilesBtn2">Drop files to upload</h3>
                         <input type="file" id="fileInput2" multiple style={{ display: "none" }} />
                       </div>
@@ -161,10 +291,121 @@ const CreateCustomer = () => {
                     </div>
                   </div>
                 </div>
+
+
+                <div className='container'>
+                  <div className='row'>
+                    <div className='col-lg-6 col-md-6 col-12'>
+                      <div className="row">
+                        <div className="mb-3">
+                          <label htmlFor="policy" className="form-label heading-color">Policy Number</label>
+                          <input type="text" className="form-control" />
+                        </div>
+                        <div className="mb-3">
+                          <div className="form-group">
+                            <label htmlFor="insurer-policy" className="form-label">Insurer</label>
+                            <select id="insurer-policy" name="insurer-policy" className="form-select">
+
+                              <option value="worldwide">Dummy Insurance</option>
+                              <option value="notUSA">Company Names</option>
+
+                            </select>
+                          </div>
+                        </div>
+
+                        <div className="mb-3">
+                          <label htmlFor="policy" className="form-label heading-color">Pan Name</label>
+                          <input type="text" className="form-control" />
+                        </div>
+
+
+                        <div className="mb-3">
+                          <label htmlFor="date" className="form-label heading-color">Start Date</label>
+                          <input type="date" className="form-control" />
+                        </div>
+
+
+                        <div className="mb-3">
+                          <label htmlFor="date" className="form-label heading-color">End Date</label>
+                          <input type="date" className="form-control" />
+                        </div>
+
+                        <div className="mb-3">
+                          <label htmlFor="date" className="form-label heading-color">Area Of Cover</label>
+                          <input type="text" className="form-control" />
+                        </div>
+
+                        <div className='mb-3'>
+                          <label>Policy Information</label>
+                          <div className="drag-area" id="dragArea1">
+
+                            <h3 id="browseFilesBtn1">Drop files to upload</h3>
+                            <input type="file" id="fileInput1" multiple style={{ display: "none" }} />
+                          </div>
+                          <div id="fileList1" className="mt-3"></div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                    <div className='col-lg-6 col-md-6 col-12'>
+                      <div className="mb-3">
+                        <div >
+                          <label htmlFor="currency" className="form-label heading-color">Currency:</label>
+                          <select id="currency" name='currency' className="form-select">
+                            <option value="$">$ USD</option>
+                            <option value="£">£ Pound</option>
+                            <option value="€">€ Euro</option>
+                            <option value="₹">₹ Rupee</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="premiumFrequency" className="form-label heading-color">Premium Frequency</label>
+                        <input type="text" className="form-control" id="premiumFrequency" />
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="premiumAmount" className="form-label heading-color">Premium Amount</label>
+                        <input type="text" className="form-control" id="premiumAmount" />
+                      </div>
+
+                      <div className="mb-3">
+                        <label htmlFor="premiumAmount" className="form-label heading-color">Deductibles Or Copay</label>
+                        <input type="text" className="form-control" id="premiumAmount" />
+                      </div>
+
+                      <div className="mb-3">
+                        <label htmlFor="premiumAmount" className="form-label heading-color">Payment Method</label>
+                        <input type="text" className="form-control" id="premiumAmount" />
+                      </div>
+
+                      <div className="mb-3">
+                        <label htmlFor="premiumAmount" className="form-label heading-color">Commission Received</label>
+                        <input type="text" className="form-control" id="premiumAmount" />
+                      </div>
+
+                      <div className='mb-3'>
+                        <label>Invoice</label>
+                        <div className="drag-area" id="dragArea1">
+
+                          <h3 id="browseFilesBtn1">Drop files to upload</h3>
+                          <input type="file" id="fileInput1" multiple style={{ display: "none" }} />
+                        </div>
+                        <div id="fileList1" className="mt-3"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-              <button className='col-12' style={{ margin: "20px 0px", padding: "8px 16px", borderRadius: "15px", border: "none" }}>Add More Policy</button>
+
               <button className='btn-grey' style={{ margin: "30px 0px" }}>Save Profile</button>
             </div>
+
+
+
+
+
           </form>
         </div>
       </div>
