@@ -150,7 +150,29 @@ border-radius:20px !important;
   border-radius: 15px;
 }
 
+.profile-data {
+ 
+  width: 150px;
+  height: 150px;
+  margin-bottom: 38px;
+  background-position: center;
+  background-size: cover;
+ 
+}
+
 
 @media screen and (max-width:992px) {
+  #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4 > div.col-12 > div > div > div > div > div{
+  flex-direction: column;
   
+  }
+  #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4 > div.col-12 > div > div > div > div > div{
+    display: flex;
+    gap: 20px;
+    align-items: start !important;
+    justify-content: start !important;
+  }
+  #root > div > div > div > div > form > div > div{
+    flex-direction: column;
+  }
 }

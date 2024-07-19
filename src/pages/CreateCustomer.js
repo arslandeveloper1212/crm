@@ -13,6 +13,11 @@ const BUTTONS = [
 
 
 const CreateCustomer = () => {
+  const [elementCount, setElementCount] = useState(1); // Start with one set of fields
+
+  const handleAddFields = () => {
+    setElementCount(elementCount + 1);
+  };
 
 
   const [policyType, setPolicyType] = useState('individual');
@@ -37,6 +42,9 @@ const CreateCustomer = () => {
   useEffect(() => {
     initializeDragAndDrop("dragArea1", "fileInput1", "fileList1", "browseFilesBtn1");
     initializeDragAndDrop("dragArea2", "fileInput2", "fileList2", "browseFilesBtn2");
+    initializeDragAndDrop("dragArea3", "fileInput3", "fileList3", "browseFilesBtn3");
+    initializeDragAndDrop("dragArea4", "fileInput4", "fileList4", "browseFilesBtn4");
+    initializeDragAndDrop("dragArea5", "fileInput5", "fileList5", "browseFilesBtn5");
   }, []);
 
   function initializeDragAndDrop(dragAreaId, fileInputId, fileListId, browseFilesBtnId) {
@@ -84,6 +92,40 @@ const CreateCustomer = () => {
       }
     }
   }
+
+
+
+
+
+
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [previewImage, setPreviewImage] = useState('');
+
+  // Function to handle file change
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      setSelectedFile(file);
+
+      // Preview the image if it's an image file
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreviewImage(reader.result);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        setPreviewImage('');
+      }
+    } else {
+      setSelectedFile(null);
+      setPreviewImage('');
+    }
+
+  };
+
 
   return (
     <div>
@@ -162,79 +204,7 @@ const CreateCustomer = () => {
 
 
 
-                  <div className='col-12'>
-                    <div className='mb-3'>
-                      <div className="form-group">
-                        <label htmlFor="policy-type" className="form-label">Policy Type</label>
-                        <select
-                          id="policy-type"
-                          name="policy-type"
-                          className="form-select"
-                          value={policyType}
-                          onChange={handlePolicyTypeChange}
-                          style={{ marginBottom: "20px" }}
-                        >
-                          <option value="individual">Individual</option>
-                          <option value="couple">Couple</option>
-                          <option value="family">Family</option>
-                          <option value="group">Group</option>
-                        </select>
-
-                        {/* Conditional rendering based on policy type */}
-
-                        {policyType === 'couple' || policyType === 'family' || policyType === 'group' ? (
-                          <div>
-                            <div style={{ width: "1320px", marginTop: "10px" }}>
-                              <div style={{display: "flex", alignItems: "center", gap: "20px", justifyContent: "space-between"}}>
-                            <div className='mb-3 ' >
-                                <label style={{ marginBottom: "8px" }} htmlFor="name">Name:</label>
-                                <input className='form-control' type="text" id="name" name="name" />
-                              </div>
-
-
-
-                              <div className="form-group mb-3">
-                                <label htmlFor="relationship" className="form-label">Relationship</label>
-                                <select id="relationship" name="relationship" className="form-select">
-
-                                  <option value="worldwide">Wife</option>
-                                  <option value="notUSA">Partner</option>
-                                  <option value="worldwide">Child</option>
-                                  <option value="notUSA">Employee</option>
-
-                                </select>
-                              </div>
-
-
-
-
-                              <div className='mb-3'>
-                                <NationalityDrop className="form-control" />
-                              </div>
-
-                              <div className='mb-3'>
-                                <label style={{ marginBottom: "8px" }} htmlFor="date-of-birth">Date of Birth:</label>
-                                <input className='form-control' type="date" id="date-of-birth" name="date-of-birth" />
-                              </div>
-                              </div>
-                              <div style={{textAlign:"end"}}>
-                                <button class="btn-grey mb-0" >Add More</button>
-                              </div>
-                            </div>
-
-
-                          </div>
-                        ) : null}
-
-
-                      </div>
-
-
-
-                    </div>
-
-                  </div>
-
+                 
 
 
 
@@ -249,32 +219,36 @@ const CreateCustomer = () => {
 
 
 
-                <div className="col-md-6 col-lg-6 col-12" style={{ zIndex: "-1" }}>
-                  <div className="justify-content-center">
-                    <img src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
-                      className="img-fluid w-10%" style={{ display: "flex", margin: "auto", width: "33%" }} alt="Profile" />
+                <div className="col-md-6 col-lg-6 col-12" >
+                  <div style={{textAlign:"center", marginBottom:"30px"}}>
+                    <img
+                      src={previewImage || 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'}
+                      className="img-fluid"
+                     style={{width: "150px", height: "150px", borderRadius: "150px", backgroundPosition:"center", backgroundSize:"cover"}}
+                      alt="Preview"
+                    />
                   </div>
                   <div className="mb-3">
-                    <input type="file" className="form-control" />
+                    <input type="file" className="form-control" onChange={handleFileChange} />
                   </div>
                   <div className="row" >
                     <div className="container mt-5">
                       <div className="mb-3">
                         <div className="form-group">
                           <label htmlFor="startDate" className="heading-color">Verified ID</label>
-                          <div className="drag-area" id="dragArea2">
-                            <h3 id="browseFilesBtn3">Drop files to upload</h3>
-                            <input type="file" id="fileInput3" multiple style={{ display: "none" }} />
+                          <div className="drag-area" id="dragArea1">
+                            <h3 id="browseFilesBtn1">Drop files to upload</h3>
+                            <input type="file" id="fileInput1" multiple style={{ display: "none" }} />
                           </div>
-                          <div id="fileList2" className="mt-3"></div>
+                          <div id="fileList1" className="mt-3"></div>
                         </div>
                       </div>
                       <div className="mb-3">
                         <div className="form-group">
                           <label htmlFor="startDate" className="heading-color">Proof Of Address</label>
                           <div className="drag-area" id="dragArea2">
-                            <h3 id="browseFilesBtn3">Drop files to upload</h3>
-                            <input type="file" id="fileInput3" multiple style={{ display: "none" }} />
+                            <h3 id="browseFilesBtn2">Drop files to upload</h3>
+                            <input type="file" id="fileInput2" multiple style={{ display: "none" }} />
                           </div>
                           <div id="fileList2" className="mt-3"></div>
                         </div>
@@ -282,15 +256,87 @@ const CreateCustomer = () => {
                     </div>
                     <div className="mb-3">
                       <label htmlFor="startDate" className="heading-color">Other Documents</label>
-                      <div className="drag-area" id="dragArea2">
+                      <div className="drag-area" id="dragArea3">
 
-                        <h3 id="browseFilesBtn2">Drop files to upload</h3>
-                        <input type="file" id="fileInput2" multiple style={{ display: "none" }} />
+                        <h3 id="browseFilesBtn3">Drop files to upload</h3>
+                        <input type="file" id="fileInput3" multiple style={{ display: "none" }} />
                       </div>
-                      <div id="fileList2" className="mt-3"></div>
+                      <div id="fileList3" className="mt-3"></div>
                     </div>
                   </div>
                 </div>
+
+
+                <div className='col-12'>
+                <div className='mb-3'>
+                  <div className="form-group">
+                    <label htmlFor="policy-type" className="form-label">Policy Type</label>
+                    <select
+                      id="policy-type"
+                      name="policy-type"
+                      className="form-select"
+                      value={policyType}
+                      onChange={handlePolicyTypeChange}
+                      style={{ marginBottom: "20px", width: "50%" }}
+                    >
+                      <option value="individual">Individual</option>
+                      <option value="couple">Couple</option>
+                      <option value="family">Family</option>
+                      <option value="group">Group</option>
+                    </select>
+
+                    {/* Conditional rendering based on policy type */}
+
+                    {policyType === 'couple' || policyType === 'family' || policyType === 'group' ? (
+                      <div>
+                        {[...Array(elementCount)].map((_, index) => (
+                          <div key={index}>
+                            <div style={{ width: "1320px", marginTop: "10px" }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: "20px", justifyContent: "space-between" }}>
+                                <div className='mb-3'>
+                                  <label style={{ marginBottom: "8px" }} htmlFor={`name-${index}`}>Name:</label>
+                                  <input className='form-control' type="text" id={`name-${index}`} name={`name-${index}`} style={{width:"300px"}} />
+                                </div>
+              
+                                <div className="form-group mb-3">
+                                  <label htmlFor={`relationship-${index}`} className="form-label">Relationship</label>
+                                  <select id={`relationship-${index}`} name={`relationship-${index}`} className="form-select" style={{width:"300px"}}>
+                                    <option value="Wife">Wife</option>
+                                    <option value="Partner">Partner</option>
+                                    <option value="Child">Child</option>
+                                    <option value="Employee">Employee</option>
+                                  </select>
+                                </div>
+              
+                                <div className='mb-3'>
+                                  <NationalityDrop id={`nationality-${index}`} name={`nationality-${index}`} className="form-control" />
+                                </div>
+              
+                                <div className='mb-3'>
+                                  <label style={{ marginBottom: "8px" }} htmlFor={`date-of-birth-${index}`}>Date of Birth:</label>
+                                  <input className='form-control' type="date" id={`date-of-birth-${index}`} name={`date-of-birth-${index}`} style={{width:"300px"}} />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+              
+                        <div style={{ textAlign: "end" }}>
+                          <button type="button" className="btn-grey mb-0" onClick={handleAddFields}>Add More</button>
+                        </div>
+                      </div>
+                    ) : null}
+                 
+
+
+                  </div>
+
+
+
+                </div>
+
+              </div>
+
 
 
                 <div className='container'>
@@ -337,12 +383,12 @@ const CreateCustomer = () => {
 
                         <div className='mb-3'>
                           <label>Policy Information</label>
-                          <div className="drag-area" id="dragArea1">
+                          <div className="drag-area" id="dragArea4">
 
-                            <h3 id="browseFilesBtn1">Drop files to upload</h3>
-                            <input type="file" id="fileInput1" multiple style={{ display: "none" }} />
+                            <h3 id="browseFilesBtn4">Drop files to upload</h3>
+                            <input type="file" id="fileInput4" multiple style={{ display: "none" }} />
                           </div>
-                          <div id="fileList1" className="mt-3"></div>
+                          <div id="fileList4" className="mt-3"></div>
                         </div>
 
 
@@ -386,12 +432,12 @@ const CreateCustomer = () => {
 
                       <div className='mb-3'>
                         <label>Invoice</label>
-                        <div className="drag-area" id="dragArea1">
+                        <div className="drag-area" id="dragArea5">
 
-                          <h3 id="browseFilesBtn1">Drop files to upload</h3>
-                          <input type="file" id="fileInput1" multiple style={{ display: "none" }} />
+                          <h3 id="browseFilesBtn5">Drop files to upload</h3>
+                          <input type="file" id="fileInput5" multiple style={{ display: "none" }} />
                         </div>
-                        <div id="fileList1" className="mt-3"></div>
+                        <div id="fileList5" className="mt-3"></div>
                       </div>
                     </div>
                   </div>
@@ -413,4 +459,16 @@ const CreateCustomer = () => {
   );
 };
 
+
+
 export default CreateCustomer;
+
+const handleAddFields = ()=>{
+ 
+  var container = document.getElementById('new-input-container');
+  
+  const newElem = document.createElement("input");
+  newElem.setAttribute("type", "text");
+  container.appendChild(newElem);
+}
+
