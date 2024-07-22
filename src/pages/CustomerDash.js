@@ -1,71 +1,145 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from '../components/Table';
-
 import Pagination from '../components/Pagination';
-const CustomerDash = ({ items }) => {
+import { Link } from 'react-router-dom';
 
-
-    const data = Array.from({ length: 50 }, (_, index) => ({ id: index + 1, title: `Item ${index + 1}` }));
+const CustomerDash = () => {
+  const [items, setItems] = useState([]);
+  const [sortedItems, setSortedItems] = useState([]);
+  const [sortOption, setSortOption] = useState('reset'); // Initial sorting option
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
   const itemsPerPage = 5; // Number of items to display per page
-    
-    const [sortedItems, setSortedItems] = useState(items || []);
-    const [sortOption, setSortOption] = useState('newest');
 
-    const sortByNewest = () => {
-        const sorted = [...sortedItems].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        setSortedItems(sorted);
-        setSortOption('newest');
+  useEffect(() => {
+    // Simulated fetch or setting of data (replace with actual data fetching if needed)
+    const fetchData = () => {
+      // Replace this with your actual data fetching mechanism (e.g., API call)
+      const data = [
+        { "id": 1, "name": "John Doe", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy A", "status": "Active" },
+        { "id": 2, "name": "Jane Smith", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy B", "status": "Inactive" },
+        { "id": 3, "name": "Alice Johnson", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy C", "status": "Active" },
+        { "id": 4, "name": "Bob Brown", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy D", "status": "Active" },
+        { "id": 5, "name": "Eve Green", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy E", "status": "Inactive" },
+        { "id": 6, "name": "Charlie White", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy F", "status": "Active" },
+        { "id": 7, "name": "Grace Lee", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy G", "status": "Inactive" },
+        { "id": 8, "name": "Henry Davis", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy H", "status": "Active" },
+        { "id": 9, "name": "Olivia Moore", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy I", "status": "Active" },
+        { "id": 10, "name": "William Wilson", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy J", "status": "Inactive" },
+        { "id": 11, "name": "Sophia Martinez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy K", "status": "Active" },
+        { "id": 12, "name": "Liam Anderson", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy L", "status": "Active" },
+        { "id": 13, "name": "Emma Hernandez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy M", "status": "Inactive" },
+        { "id": 14, "name": "James Gonzalez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy N", "status": "Active" },
+        { "id": 15, "name": "Ava Perez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy O", "status": "Active" },
+        { "id": 16, "name": "Logan Ramirez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy P", "status": "Inactive" },
+        { "id": 17, "name": "Mia Flores", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy Q", "status": "Active" },
+        { "id": 18, "name": "Noah Cruz", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy R", "status": "Active" },
+        { "id": 19, "name": "Isabella Rivera", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy S", "status": "Inactive" },
+        { "id": 20, "name": "Elijah Torres", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy T", "status": "Active" }
+      ];
+      setItems(data);
+      setSortedItems(data); // Initialize sortedItems with the fetched data
     };
 
-    // You can add more sorting options here as needed
-    // const sortByOldest = () => {
-    //     const sorted = [...sortedItems].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-    //     setSortedItems(sorted);
-    //     setSortOption('oldest');
-    // };
+    fetchData();
+  }, []); // Empty dependency array to run the effect only once on component mount
 
-    return (
-        <div className="custom-width-middle padding-given">
-            <div className="row justify-content-between d-flex" style={{margin: "18px 0px"}}>
-                <h1 className='main-heading'>Customer Dashboard</h1>
-                <span>Manage Client Data</span>
+  // Sorting functions (sortByActive, sortByInactive, resetSort) go here
+  const sortByActive = () => {
+    const sorted = [...items].sort((a, b) => (a.status === 'Active' ? -1 : 1));
+    setSortedItems(sorted);
+    setSortOption('active');
+    setCurrentPage(1); // Reset current page to 1 after sorting
+  };
+
+  const sortByInactive = () => {
+    const sorted = [...items].sort((a, b) => (a.status === 'Inactive' ? -1 : 1));
+    setSortedItems(sorted);
+    setSortOption('inactive');
+    setCurrentPage(1); // Reset current page to 1 after sorting
+  };
+
+  const resetSort = () => {
+    setSortedItems(items); // Show all items without sorting
+    setSortOption('reset');
+    setCurrentPage(1); // Reset current page to 1 after resetting
+  };
+
+  // Search functionality
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setCurrentPage(1); // Reset current page to 1 when search term changes
+  };
+
+  // Filter items based on search term
+  const filteredItems = sortedItems.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    // Add more fields to search by (e.g., nationality, policy, etc.) if needed
+  );
+
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  return (
+    <div className="full-width-screen padding-given">
+      <div className="row" style={{ margin: "18px 0px" }}>
+        <div className='justify-content-between d-flex'>
+          <div>
+            <h1 className='main-heading'>Customer Dashboard</h1>
+            <span>Manage Client Data</span>
+          </div>
+          <div>
+            <div className='cust-grey-button d-flex'>
+              <button className='btn-grey' style={{ margin: '30px 0px' }}>Export Data</button>
+              <button className='btn-grey' style={{ margin: '30px 8px' }}>Upload CSV</button>
+              <Link to={"/create-customer"}><button className='btn-grey' style={{ margin: '30px 0px' }}>Create Customer</button></Link>
             </div>
-            <div className='row'>
-                <div className='col-lg-6 col-md-6 col-12'>
-                    <form className="d-flex">
-                        <input style={{ borderRadius: "15px", padding: "8px 16px" }} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        {/* Add a search button if needed */}
-                        {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
-                    </form>
-                </div>
-                <div className='col-lg-6 col-md-6 col-12' style={{ display: "flex", justifyContent: "end" }}>
-                    <div className="dropdown mb-3">
-                        <button style={{ border: "none", padding: "8px 16px", borderRadius: "15px" }} className=" dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort by: {sortOption === 'newest' ? 'Newest' : 'Oldest'}
-                        </button>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><button className="dropdown-item" onClick={sortByNewest}>Newest</button></li>
-                            {/* Add more sorting options as needed */}
-                            {/* <li><button className="dropdown-item" onClick={sortByOldest}>Oldest</button></li> */}
-                        </ul>
-                    </div>
-                    <ul className="list-group">
-                        {sortedItems.map(item => (
-                            <li key={item.id} className="list-group-item">
-                                {item.title}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-              
-                <Pagination data={data} itemsPerPage={itemsPerPage} />
-            </div>
-          
-            
-            
-            
+          </div>
         </div>
-    );
+      </div>
+      <div className='row'>
+        <div className='col-lg-6 col-md-6 col-12'>
+          <form className="d-flex">
+            <input
+              style={{ borderRadius: "15px", padding: "8px 16px", width:"320px" }}
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+          </form>
+        </div>
+        <div className='col-lg-6 col-md-6 col-12' style={{ display: "flex", justifyContent: "end" }}>
+          <div className="dropdown mb-3">
+            <button className=" btn-grey dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort by: {sortOption === 'active' ? 'Active' : sortOption === 'inactive' ? 'Inactive' : 'Reset'}
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><button className="dropdown-item" onClick={sortByActive}>Active</button></li>
+              <li><button className="dropdown-item" onClick={sortByInactive}>Inactive</button></li>
+              <li><button className="dropdown-item" onClick={resetSort}>Reset</button></li>
+            </ul>
+          </div>
+        </div>
+        <div className="col-12">
+          <Table items={currentItems} />
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={filteredItems.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CustomerDash;

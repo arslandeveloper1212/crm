@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NationalityDrop = () => {
+const NationalityDrop = ({value}) => {
   return (
     <div>
     <label htmlFor="nationality" className="form-label">Nationality</label>

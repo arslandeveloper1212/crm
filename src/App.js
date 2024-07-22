@@ -48,9 +48,10 @@ function App() {
         <Route path='/activity-log' element={<ActivityLog />} />
         <Route path='/knowledge-base-faq' element={<KnowledgeBase />} />
         <Route path='/knowledge-base-accordion' element={<KnowledgeAccord />} />
+        <Route path = '/dashboard-customer' element={<CustomerDash />} />
 
         {/* Conditional Route rendering */}
-        {isDashboardCustomerRoute && <Route path='/dashboard-customer' element={<CustomerDash />} />}
+       
         {isDashboardPolicyRoute && <Route path="/policy-dashboard" element={<PolicyDashboard />} />}
         {isDashboardBillingRoute && <Route path='/billing-dashboard' element={<BillingDashboard />} />}
         {isDashboardSupportRoute && <Route path="/support-dashboard" element={<SupportDashboard />} />}
@@ -58,7 +59,7 @@ function App() {
       </Routes>
 
       {/* Conditional rendering of detailed side component */}
-      {isDashboardCustomerRoute && <CustDetailSide />}
+     
       {isDashboardPolicyRoute && <CustPolicySide />}
       {isDashboardBillingRoute && <CustBillingSide />}
       {isDashboardSupportRoute && <CustSupportSide />}
