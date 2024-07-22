@@ -46,14 +46,14 @@ const CustomerDash = () => {
 
   // Sorting functions (sortByActive, sortByInactive, resetSort) go here
   const sortByActive = () => {
-    const sorted = [...items].sort((a, b) => (a.status === 'Active' ? -1 : 1));
+    const sorted = [...items].filter(item => item.status === 'Active');
     setSortedItems(sorted);
     setSortOption('active');
     setCurrentPage(1); // Reset current page to 1 after sorting
   };
 
   const sortByInactive = () => {
-    const sorted = [...items].sort((a, b) => (a.status === 'Inactive' ? -1 : 1));
+    const sorted = [...items].filter(item => item.status === 'Inactive');
     setSortedItems(sorted);
     setSortOption('inactive');
     setCurrentPage(1); // Reset current page to 1 after sorting
@@ -71,10 +71,14 @@ const CustomerDash = () => {
     setCurrentPage(1); // Reset current page to 1 when search term changes
   };
 
-  // Filter items based on search term
+  // Filter items based on search term and sort option
   const filteredItems = sortedItems.filter(item =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    // Add more fields to search by (e.g., nationality, policy, etc.) if needed
+    (sortOption === 'active' && item.status === 'Active') ||
+    (sortOption === 'inactive' && item.status === 'Inactive') ||
+    (sortOption === 'reset' && (
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by search term if reset option
+      // Add more fields to search by (e.g., nationality, policy, etc.) if needed
+    ))
   );
 
   // Pagination logic
@@ -106,7 +110,7 @@ const CustomerDash = () => {
         <div className='col-lg-6 col-md-6 col-12'>
           <form className="d-flex">
             <input
-              style={{ borderRadius: "15px", padding: "8px 16px", width:"320px" }}
+              style={{ borderRadius: "15px", padding: "8px 16px" }}
               className="form-control me-2"
               type="search"
               placeholder="Search"
@@ -118,7 +122,7 @@ const CustomerDash = () => {
         </div>
         <div className='col-lg-6 col-md-6 col-12' style={{ display: "flex", justifyContent: "end" }}>
           <div className="dropdown mb-3">
-            <button className=" btn-grey dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
               Sort by: {sortOption === 'active' ? 'Active' : sortOption === 'inactive' ? 'Inactive' : 'Reset'}
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
