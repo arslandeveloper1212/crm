@@ -162,6 +162,15 @@ border-radius:20px !important;
  
 }
 
+.viewcustomer-get{
+  display: flex;
+  flex-direction: row;
+}
+
+.str-bold-h{
+  font-weight: bold;
+}
+
 
 @media screen and (max-width:992px) {
   #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4 > div.col-12 > div > div > div > div > div{
@@ -177,4 +186,5 @@ border-radius:20px !important;
   #root > div > div > div > div > form > div > div{
     flex-direction: column;
   }
+
 }

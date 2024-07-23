@@ -3,8 +3,43 @@ import React from 'react';
 import { FaEye } from "react-icons/fa";
 import { TiEdit } from "react-icons/ti";
 import { RiDeleteBin6Line } from "react-icons/ri";
-const Table = ({ items }) => {
- console.log(items);
+import { Link, useParams } from 'react-router-dom';
+const Table = ({ items, onDelete}) => {
+
+  const handleDelete = (id) => {
+    onDelete(id); // Call the onDelete function passed from props
+  };
+
+
+  // delete id code
+
+  // const [user, setUser] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
+
+  // const showUserApi = "http://localhost:3000/delete-customer/${id}";
+
+  // const handelDelete = async (id) => {
+  //   console.log("id : -", id);
+    
+    // setIsLoading(true);
+    // try {
+    //   const response = await fetch(showUserApi.concat("/") + id, {
+    //     method: "DELETE",
+    //   });
+    //   if (!response.ok) {
+    //     throw new Error("Failed to delete item");
+    //   }
+    //   setUser(user.filter((item) => item.id !== id));
+    // } catch (error) {
+    //   setError(error.message);
+    // } finally {
+    //   setIsLoading(false);
+    // }
+  // };
+
+
+ 
   return (
     <div>
       <table className="table">
@@ -33,9 +68,23 @@ const Table = ({ items }) => {
                 <button className={`btn ${item.status === 'Active' ? 'btn-active' : 'btn-danger'}`}>{item.status}</button>
               </td>
               <div className='gap-30'>
-              <td><FaEye /></td>
-              <td><TiEdit /></td>
-              <td><RiDeleteBin6Line /></td>
+              <td>
+              <Link to={`/view-customer/${item.id}`}>
+              <FaEye />
+              </Link>
+              
+              </td>
+              <td>
+              <Link to={`/edit-customer/${item.id}`}>
+              <TiEdit />
+              </Link>
+              
+              </td>
+              <td>
+              
+              <RiDeleteBin6Line  onClick={() => handleDelete(item.id)} />
+              
+              </td>
               </div>
              
             </tr>

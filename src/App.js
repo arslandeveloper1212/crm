@@ -19,6 +19,8 @@ import KnowledgeBase from './pages/KnowledgeBase';
 import KnowledgeAccord from './pages/KnowledgeAccord';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
+import EditCustomer from './pages/EditCustomer';
+import ViewCustomer from './pages/ViewCustomer';
 
 
 function App() {
@@ -38,7 +40,7 @@ function App() {
       {/* Conditional rendering of Sidebar */}
       {!isSignupRoute && <Sidebar />}
 
-      <Routes>
+      <Routes >
         <Route path='/' element={<Home />} />
         {/* Remove Sidebar from Signup route */}
         <Route path="/signup" element={<Signup />} />
@@ -49,7 +51,8 @@ function App() {
         <Route path='/knowledge-base-faq' element={<KnowledgeBase />} />
         <Route path='/knowledge-base-accordion' element={<KnowledgeAccord />} />
         <Route path = '/dashboard-customer' element={<CustomerDash />} />
-
+        <Route path='/edit-customer/:id' element={<EditCustomer/>}/>
+        <Route path='/view-customer/:id' element={<ViewCustomer/>}/>
         {/* Conditional Route rendering */}
        
         {isDashboardPolicyRoute && <Route path="/policy-dashboard" element={<PolicyDashboard />} />}

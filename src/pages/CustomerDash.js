@@ -9,7 +9,7 @@ const CustomerDash = () => {
   const [sortOption, setSortOption] = useState('reset'); // Initial sorting option
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const itemsPerPage = 5; // Number of items to display per page
+  const itemsPerPage = 10; // Number of items to display per page
 
   useEffect(() => {
     // Simulated fetch or setting of data (replace with actual data fetching if needed)
@@ -81,6 +81,28 @@ const CustomerDash = () => {
     ))
   );
 
+
+
+  const onDelete =  (id) => {
+    alert( id)
+    // Perform delete operation (replace with actual API call)
+    // try {
+    //   const response =  fetch(`http://localhost:3000/delete-customer/${id}`, {
+    //     method: 'DELETE',
+    //   });
+    //   if (!response.ok) {
+    //     throw new Error('Failed to delete item');
+    //   }
+    //   // Filter out the deleted item from items state
+    //   setItems(items.filter(item => item.id !== id));
+    //   setSortedItems(sortedItems.filter(item => item.id !== id));
+    // } catch (error) {
+    //   console.error('Error deleting item:', error);
+    //   // Handle error state if needed
+    // }
+  };
+
+
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -122,7 +144,7 @@ const CustomerDash = () => {
         </div>
         <div className='col-lg-6 col-md-6 col-12' style={{ display: "flex", justifyContent: "end" }}>
           <div className="dropdown mb-3">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <button className=" btn-grey dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
               Sort by: {sortOption === 'active' ? 'Active' : sortOption === 'inactive' ? 'Inactive' : 'Reset'}
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -133,7 +155,7 @@ const CustomerDash = () => {
           </div>
         </div>
         <div className="col-12">
-          <Table items={currentItems} />
+          <Table items={currentItems} onDelete={onDelete} />
           <Pagination
             itemsPerPage={itemsPerPage}
             totalItems={filteredItems.length}
