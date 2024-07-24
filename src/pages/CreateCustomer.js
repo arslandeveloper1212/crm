@@ -219,7 +219,7 @@ const CreateCustomer = () => {
 
 
 
-                <div className="col-md-6 col-lg-6 col-12" >
+                <div className="col-md-12 col-lg-6 col-12" >
                   <div style={{textAlign:"center", marginBottom:"30px"}}>
                     <img
                       src={previewImage || 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'}
@@ -341,7 +341,7 @@ const CreateCustomer = () => {
 
                 <div className='container'>
                   <div className='row'>
-                    <div className='col-lg-6 col-md-6 col-12'>
+                    <div className='col-lg-6 col-md-12  col-12'>
                       <div className="row">
                         <div className="mb-3">
                           <label htmlFor="policy" className="form-label heading-color">Policy Number</label>
@@ -394,7 +394,7 @@ const CreateCustomer = () => {
 
                       </div>
                     </div>
-                    <div className='col-lg-6 col-md-6 col-12'>
+                    <div className='col-lg-6 col-md-12  col-12'>
                       <div className="mb-3">
                         <div >
                           <label htmlFor="currency" className="form-label heading-color">Currency:</label>

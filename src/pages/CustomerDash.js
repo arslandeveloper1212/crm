@@ -132,7 +132,7 @@ const CustomerDash = () => {
         <div className='col-lg-6 col-md-6 col-12'>
           <form className="d-flex">
             <input
-              style={{ borderRadius: "15px", padding: "8px 16px" }}
+              style={{ borderRadius: "15px", padding: "8px 16px", width:"320px" }}
               className="form-control me-2"
               type="search"
               placeholder="Search"

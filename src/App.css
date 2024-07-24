@@ -171,6 +171,34 @@ border-radius:20px !important;
   font-weight: bold;
 }
 
+.btn-green{
+  background-color: #008766;
+  color: white;
+  padding: 5px 51px;
+  border: none;
+}
+.ftss{
+  background-color: rgb(245, 245, 245) !important;
+   
+    border-top: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+    border-left: 2px solid rgb(197, 197, 197) !important;
+    border-radius: 0px !important;
+    margin: 10px 0px;
+}
+
+.ftss-pp{
+  background-color: rgb(245, 245, 245) !important;
+   
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 1px solid rgb(197, 197, 197) !important;
+  border-left: 1px solid rgb(197, 197, 197) !important;
+  border-radius: 0px !important;
+  margin: 10px 0px;
+}
+
 
 @media screen and (max-width:992px) {
   #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4 > div.col-12 > div > div > div > div > div{
@@ -184,6 +212,38 @@ border-radius:20px !important;
     justify-content: start !important;
   }
   #root > div > div > div > div > form > div > div{
+    flex-direction: column;
+  }
+  .viewcustomer-get{
+    flex-direction: column;
+    gap: 14px;
+    padding: 0px !important;
+  }
+  #root > div > div.full-width-screen.padding-given > div > div > div{
+  
+      display: flex;
+      flex-direction: column !important;
+      gap: 14px;
+  
+  }
+  #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4{
+    width: 100% !important;
+  }
+  #root > div > div > div > div > form > div > div > div > div > div > div > div > div > div{
+    display: flex;
+    align-items: start !important;
+    gap: 14px !important;
+    /* justify-content: space-between; */
+    flex-direction: column !important;
+
+  }
+  #root > div > div > div > div > form > div > div > div.container > div{
+    flex-direction: column !important;
+  }
+  .form-group select{
+width: 100% !important;
+  }
+  #root > div > div.full-width-screen.padding-given > div > div > div > div{
     flex-direction: column;
   }
 

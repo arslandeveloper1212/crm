@@ -27,9 +27,26 @@ const ViewCustomer = () => {
 
 
 
+    const [showModal, setShowModal] = useState(false);
+    const [date, setDate] = useState('');
+    const [activity, setActivity] = useState('');
 
 
+    const handleAddButtonClick = () => {
+        setShowModal(true);
+    };
 
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const handleSave = () => {
+        // Handle saving date and activity here
+        console.log('Date:', date);
+        console.log('Activity:', activity);
+        // Optionally, you can reset state values or perform other actions
+        setShowModal(false);
+    };
 
 
     return (
@@ -40,8 +57,8 @@ const ViewCustomer = () => {
 
             <div className='mt-5'>
                 <div className='container'>
-                    <div className='row d-flex'>
-                        <div className='col-lg-4 col-md-4 col-12'>
+                    <div className='row'>
+                        <div className='col-lg-3 col-md-3 col-12'>
                             <div className='flex-row d-flex'>
                                 <img style={{ width: "80px" }} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxOX4mkcW8pH9FbpI9rTBkokiMxSY2GJ3eyw&s' className='img-fluid' />
                                 <div className='flex-column d-flex px-3'>
@@ -49,31 +66,34 @@ const ViewCustomer = () => {
                                     <span>Test@gmail.com</span>
                                     <span>+923474452235</span>
                                 </div>
+
+
                             </div>
 
                         </div>
-                        <div className='col-lg col-md col-12'>
+
+                        <div className='col-lg-2 col-md-2 col-12'>
                             <div className='flex-column d-flex px-3'>
                                 <span>Nationality</span>
                                 <span>Thai</span>
 
                             </div>
                         </div>
-                        <div className='col-lg col-md col-12'>
+                        <div className=' col-lg-2 col-md-2 col-12'>
                             <div className='flex-column d-flex px-3'>
                                 <span>Date Of Birth</span>
                                 <span>08/08/2024</span>
 
                             </div>
                         </div>
-                        <div className='col-lg col-md col-12'>
+                        <div className='col-lg-2 col-md-2 col-12'>
                             <div className='flex-column d-flex px-3'>
                                 <span>Sex</span>
                                 <span>Male</span>
 
                             </div>
                         </div>
-                        <div className='col-lg col-md col-12'>
+                        <div className='col-lg-2 col-md-2 col-12'>
                             <div className='flex-column d-flex px-3'>
                                 <span>Country</span>
                                 <span>Thailand</span>
@@ -81,13 +101,15 @@ const ViewCustomer = () => {
                             </div>
                         </div>
 
-                        <div className='col-lg col-md col-12'>
+                        <div className='col-lg-2 col-md-2 col-12'>
                             <div className='flex-column d-flex px-3'>
                                 <span>Address</span>
                                 <span>House No 112, San Fransico</span>
 
                             </div>
                         </div>
+
+
                     </div>
                     <hr style={{ color: "grey" }} />
                     <div className='row'>
@@ -191,28 +213,28 @@ const ViewCustomer = () => {
                                 </div>
 
                                 <div className='col-lg col-md col-12'>
-                                    <div className='flex-column d-flex px-3'>
+                                    <div className='flex-column d-flex'>
                                         <span>Policy Type</span>
                                         <span>Family</span>
 
                                     </div>
                                 </div>
                                 <div className='col-lg col-md col-12'>
-                                    <div className='flex-column d-flex px-3'>
+                                    <div className='flex-column d-flex '>
                                         <span>Insurer</span>
                                         <span>XYZ</span>
 
                                     </div>
                                 </div>
                                 <div className='col-lg col-md col-12'>
-                                    <div className='flex-column d-flex px-3'>
+                                    <div className='flex-column d-flex '>
                                         <span>Plan Number</span>
                                         <span>Connect</span>
 
                                     </div>
                                 </div>
                                 <div className='col-lg col-md col-12'>
-                                    <div className='flex-column d-flex px-3'>
+                                    <div className='flex-column d-flex '>
                                         <span>Start Date</span>
                                         <span>10/10/2022</span>
 
@@ -220,14 +242,14 @@ const ViewCustomer = () => {
                                 </div>
 
                                 <div className='col-lg col-md col-12'>
-                                    <div className='flex-column d-flex px-3'>
+                                    <div className='flex-column d-flex'>
                                         <span>End Date</span>
                                         <span>10/10/2022</span>
                                     </div>
                                 </div>
 
                                 <div className='col-lg col-md col-12'>
-                                    <div className='flex-column d-flex px-3'>
+                                    <div className='flex-column d-flex '>
                                         <span>Area Of Cover</span>
                                         <span>Worldwide</span>
                                     </div>
@@ -349,19 +371,99 @@ const ViewCustomer = () => {
                                 </div>
 
 
-                             
+
 
 
 
                             </div>
-                          
-                            <button className="btn-grey">
-                            Add
-                         </button>
+
+                            <button className="btn-grey" onClick={handleAddButtonClick}>
+                                Add
+                            </button>
                         </div>
 
                     </div>
 
+                </div>
+
+
+
+                {/* Modal */}
+                {showModal && (
+                    <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }}>
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title">Add Activity</h5>
+                                    <button type="button" className="btn-close" onClick={handleCloseModal}></button>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="mb-3">
+                                        <label htmlFor="dateInput" className="form-label">Date</label>
+                                        <input type="date" className="form-control" id="dateInput"
+                                            value={date} onChange={(e) => setDate(e.target.value)} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="activityInput" className="form-label">Activity</label>
+                                        <input type="text" className="form-control" id="activityInput"
+                                            value={activity} onChange={(e) => setActivity(e.target.value)} />
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+
+                                    <button type="button" className="btn-green" onClick={handleSave}>Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {showModal && <div className="modal-backdrop fade show"></div>}
+
+
+                <div className='container mt-5'>
+                    <div className='row'>
+                        <div className='flex-column d-flex '>
+                            <div className="mb-3">
+                                <span className='str-bold-h'>Activity</span>
+                                <div className='flex-row d-flex py-3'>
+
+
+
+                                    <div className='col-lg-2 col-md-2 col-12'>
+                                        <div className='flex-column d-flex px-3'>
+                                            <span className='str-bold-h'>Date </span>
+                                            <span>18/18/2022</span>
+                                            <span>18/18/2022</span>
+                                            <span>18/18/2022</span>
+                                            <span>18/18/2022</span>
+
+                                        </div>
+                                    </div>
+                                    <div className='col-lg-10 col-md-10 col-12'>
+                                        <div className='flex-column d-flex px-3'>
+                                            <span className='str-bold-h'>Details</span>
+                                            <span>Lorem ipsum is a dummy text</span>
+                                            <span>Lorem ipsum is a dummy text</span>
+                                            <span>Lorem ipsum is a dummy text</span>
+                                            <span>Lorem ipsum is a dummy text</span>
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
