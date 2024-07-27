@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Table from '../components/Table';
+import Table from '../../components/Table';
 
-import Pagination from '../components/Pagination';
-const SupportDashboard = ({ items }) => {
+import Pagination from '../../components/Pagination';
+const SupportTicketAdmin = ({ items }) => {
 
 
     const data = Array.from({ length: 50 }, (_, index) => ({ id: index + 1, title: `Item ${index + 1}` }));
@@ -28,7 +28,7 @@ const SupportDashboard = ({ items }) => {
         <div className="custom-width-middle padding-given">
             <div className="row justify-content-between d-flex" style={{margin: "18px 0px"}}>
                 <h1 className='main-heading'>Support Dashboard</h1>
-                <span>For Support and Feedback</span>
+                <span>for support and feedback</span>
             </div>
             <div className='row'>
                 <div className='col-lg-6 col-md-6 col-12'>
@@ -57,7 +57,7 @@ const SupportDashboard = ({ items }) => {
                         ))}
                     </ul>
                 </div>
-              <Table items={items}/>
+              
                 <Pagination data={data} itemsPerPage={itemsPerPage} />
             </div>
           
@@ -68,4 +68,4 @@ const SupportDashboard = ({ items }) => {
     );
 };
 
-export default SupportDashboard;
+export default SupportTicketAdmin;
