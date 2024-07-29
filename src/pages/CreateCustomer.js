@@ -132,7 +132,7 @@ const CreateCustomer = () => {
       <div className="col-lg-12 col-md-12 col-12">
         <div className="control-overwidth padding-given">
           <form>
-            <div className="container">
+            <div >
               <div className="row justify-content-between d-flex">
                 <h1 className='main-heading'>Create Customer</h1>
                 <span>add new customer</span>

@@ -51,12 +51,12 @@ const ViewCustomer = () => {
 
     return (
 
-        <div className='full-width-screen padding-given'>
+        <div className='container-fluid'>
             <h1 className='main-heading'>Customer Details</h1>
             <span>Manage Client Data</span>
 
             <div className='mt-5'>
-                <div className='container'>
+                <div>
                     <div className='row'>
                         <div className='col-lg-3 col-md-3 col-12'>
                             <div className='flex-row d-flex'>
@@ -398,15 +398,30 @@ const ViewCustomer = () => {
                                     <button type="button" className="btn-close" onClick={handleCloseModal}></button>
                                 </div>
                                 <div className="modal-body">
-                                    <div className="mb-3">
-                                        <label htmlFor="dateInput" className="form-label">Date</label>
-                                        <input type="date" className="form-control" id="dateInput"
+                                   
+                                    <div className='row d-flex flex-row'>
+                                   
+                                        <div className="mb-3">
+                                            <label htmlFor="dateInput" className="form-label">Date</label>
+                                            <input type="date" className="form-control" id="dateInput"
                                             value={date} onChange={(e) => setDate(e.target.value)} />
+                                        </div>
+                                        <div >
+                                        <label htmlFor="Category" className="form-label heading-color">Category:</label>
+                                        <select id="Category" name='Category' className="form-select">
+                                          <option value="contact">Contact</option>
+                                          <option value="service">Service</option>
+                                          <option value="renewal">Renewal</option>
+                                          <option value="claim">Claim</option>
+                                          <option value="none">None</option>
+                                        </select>
+                                      </div>
+                                   
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="activityInput" className="form-label">Activity</label>
-                                        <input type="text" className="form-control" id="activityInput"
-                                            value={activity} onChange={(e) => setActivity(e.target.value)} />
+                                        <textarea rows="5" cols="" type="text" className="form-control" id="activityInput"
+                                            value={activity} onChange={(e) => setActivity(e.target.value)}></textarea>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
@@ -420,16 +435,16 @@ const ViewCustomer = () => {
                 {showModal && <div className="modal-backdrop fade show"></div>}
 
 
-                <div className='container mt-5'>
+                <div className='mt-5'>
+                  <span className='str-bold-h'>Activity</span>
                     <div className='row'>
-                        <div className='flex-column d-flex '>
-                            <div className="mb-3">
-                                <span className='str-bold-h'>Activity</span>
+                      
+                              
                                 <div className='flex-row d-flex py-3'>
 
 
 
-                                    <div className='col-lg-2 col-md-2 col-12'>
+                                    <div className='col-lg-3 col-12'>
                                         <div className='flex-column d-flex px-3'>
                                             <span className='str-bold-h'>Date </span>
                                             <span>18/18/2022</span>
@@ -439,7 +454,19 @@ const ViewCustomer = () => {
 
                                         </div>
                                     </div>
-                                    <div className='col-lg-10 col-md-10 col-12'>
+
+                                    
+                                    <div className='col-lg-3 col-12'>
+                                        <div className='flex-column d-flex px-3'>
+                                            <span className='str-bold-h'>Category </span>
+                                            <span>None</span>
+                                            <span>Renewal</span>
+                                            <span>Contact</span>
+                                            <span>Claim</span>
+
+                                        </div>
+                                    </div>
+                                    <div className='col-lg-6 col-12'>
                                         <div className='flex-column d-flex px-3'>
                                             <span className='str-bold-h'>Details</span>
                                             <span>Lorem ipsum is a dummy text</span>
@@ -462,8 +489,7 @@ const ViewCustomer = () => {
 
 
                             </div>
-                        </div>
-                    </div>
+                      
                 </div>
 
             </div>

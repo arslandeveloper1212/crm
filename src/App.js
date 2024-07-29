@@ -13,7 +13,7 @@ import ViewCustomer from './pages/ViewCustomer';
 import CustomerDash from './pages/CustomerDash';
 import PolicyDashboard from './pages/PolicyDashboard';
 import BillingDashboard from './pages/BillingDashboard';
-import SupportDashboard from './pages/SupportDashboard';
+import SupportDashboardLayout from './components/SupportDashboardLayout'; // Import the new layout
 import HomeA from './pages/Admin/HomeA';
 import ClientLayout from './pages/ClientLayout';
 import AdminLayout from './pages/Admin/AdminLayout';
@@ -45,7 +45,8 @@ function App() {
         <Route path="/dashboard-customer" element={<CustomerDash />} />
         <Route path="/policy-dashboard" element={<PolicyDashboard />} />
         <Route path="/billing-dashboard" element={<BillingDashboard />} />
-        <Route path="/support-dashboard" element={<SupportDashboard />} />
+        <Route path="/support-dashboard" element={<SupportDashboardLayout />} />
+        
       </Route>
 
       {/* Admin Routes */}

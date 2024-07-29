@@ -16,26 +16,13 @@ const CustomerDash = () => {
     const fetchData = () => {
       // Replace this with your actual data fetching mechanism (e.g., API call)
       const data = [
-        { "id": 1, "name": "John Doe", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy A", "status": "Active" },
-        { "id": 2, "name": "Jane Smith", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy B", "status": "Inactive" },
-        { "id": 3, "name": "Alice Johnson", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy C", "status": "Active" },
-        { "id": 4, "name": "Bob Brown", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy D", "status": "Active" },
-        { "id": 5, "name": "Eve Green", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy E", "status": "Inactive" },
-        { "id": 6, "name": "Charlie White", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy F", "status": "Active" },
-        { "id": 7, "name": "Grace Lee", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy G", "status": "Inactive" },
-        { "id": 8, "name": "Henry Davis", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy H", "status": "Active" },
-        { "id": 9, "name": "Olivia Moore", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy I", "status": "Active" },
-        { "id": 10, "name": "William Wilson", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy J", "status": "Inactive" },
-        { "id": 11, "name": "Sophia Martinez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy K", "status": "Active" },
-        { "id": 12, "name": "Liam Anderson", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy L", "status": "Active" },
-        { "id": 13, "name": "Emma Hernandez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy M", "status": "Inactive" },
-        { "id": 14, "name": "James Gonzalez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy N", "status": "Active" },
-        { "id": 15, "name": "Ava Perez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy O", "status": "Active" },
-        { "id": 16, "name": "Logan Ramirez", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy P", "status": "Inactive" },
-        { "id": 17, "name": "Mia Flores", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy Q", "status": "Active" },
-        { "id": 18, "name": "Noah Cruz", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy R", "status": "Active" },
-        { "id": 19, "name": "Isabella Rivera", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy S", "status": "Inactive" },
-        { "id": 20, "name": "Elijah Torres", "nationality": "Thai", "insurer": "KSLI", "policy": "Policy T", "status": "Active" }
+        { id: 1, name: "John Doe", nationality: "Thai", insurer: "KSLI", policy: "Submitted", status: "Active", renewal: "2 Month" },
+        { id: 2, name: "Jane Smith", nationality: "Thai", insurer: "KSLI", policy: "none", status: "Inactive", renewal: "none" },
+        { id: 3, name: "Alice Johnson", nationality: "Thai", insurer: "KSLI", policy: "In Process", status: "Active", renewal: "3 Month" },
+        { id: 4, name: "Bob Brown", nationality: "Thai", insurer: "KSLI", policy: "In Process", status: "Active", renewal: "none" },
+        { id: 5, name: "Eve Green", nationality: "Thai", insurer: "KSLI", policy: "In Process", status: "Inactive", renewal: "2 Month" },
+        { id: 6, name: "Charlie White", nationality: "Thai", insurer: "KSLI", policy: "None", status: "Active", renewal: "4 Month" },
+        { id: 7, name: "Grace Lee", nationality: "Thai", insurer: "KSLI", policy: "Submitted", status: "Inactive", renewal: "none" },
       ];
       setItems(data);
       setSortedItems(data); // Initialize sortedItems with the fetched data
@@ -44,18 +31,25 @@ const CustomerDash = () => {
     fetchData();
   }, []); // Empty dependency array to run the effect only once on component mount
 
-  // Sorting functions (sortByActive, sortByInactive, resetSort) go here
-  const sortByActive = () => {
-    const sorted = [...items].filter(item => item.status === 'Active');
+  // Sorting functions
+  const sortByStatus = (status) => {
+    const sorted = items.filter(item => item.status === status);
     setSortedItems(sorted);
-    setSortOption('active');
+    setSortOption(status);
     setCurrentPage(1); // Reset current page to 1 after sorting
   };
 
-  const sortByInactive = () => {
-    const sorted = [...items].filter(item => item.status === 'Inactive');
+  const sortByPolicy = (policy) => {
+    const sorted = items.filter(item => item.policy === policy);
     setSortedItems(sorted);
-    setSortOption('inactive');
+    setSortOption(policy);
+    setCurrentPage(1); // Reset current page to 1 after sorting
+  };
+
+  const sortByRenewal = (renewal) => {
+    const sorted = items.filter(item => item.renewal === renewal);
+    setSortedItems(sorted);
+    setSortOption(renewal);
     setCurrentPage(1); // Reset current page to 1 after sorting
   };
 
@@ -73,35 +67,32 @@ const CustomerDash = () => {
 
   // Filter items based on search term and sort option
   const filteredItems = sortedItems.filter(item =>
-    (sortOption === 'active' && item.status === 'Active') ||
-    (sortOption === 'inactive' && item.status === 'Inactive') ||
-    (sortOption === 'reset' && (
-      item.name.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by search term if reset option
-      // Add more fields to search by (e.g., nationality, policy, etc.) if needed
-    ))
+    (sortOption === 'reset' && item.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (sortOption === 'Active' && item.status === 'Active') ||
+    (sortOption === 'Inactive' && item.status === 'Inactive') ||
+    (sortOption === 'Submitted' && item.policy === 'Submitted') ||
+    (sortOption === 'In Process' && item.policy === 'In Process') ||
+    (sortOption === '2 Month' && item.renewal === '2 Month') ||
+    (sortOption === '3 Month' && item.renewal === '3 Month') ||
+    (sortOption === '4 Month' && item.renewal === '4 Month') || 
+    (sortOption === '5 Month' && item.renewal === '5 Month')
   );
 
-
-
-  const onDelete =  (id) => {
-    alert( id)
-    // Perform delete operation (replace with actual API call)
-    // try {
-    //   const response =  fetch(`http://localhost:3000/delete-customer/${id}`, {
-    //     method: 'DELETE',
-    //   });
-    //   if (!response.ok) {
-    //     throw new Error('Failed to delete item');
-    //   }
-    //   // Filter out the deleted item from items state
-    //   setItems(items.filter(item => item.id !== id));
-    //   setSortedItems(sortedItems.filter(item => item.id !== id));
-    // } catch (error) {
-    //   console.error('Error deleting item:', error);
-    //   // Handle error state if needed
-    // }
+  const onDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/delete-customer/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete item');
+      }
+      // Filter out the deleted item from items state
+      setItems(items.filter(item => item.id !== id));
+      setSortedItems(sortedItems.filter(item => item.id !== id));
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
   };
-
 
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -116,7 +107,7 @@ const CustomerDash = () => {
       <div className="row" style={{ margin: "18px 0px" }}>
         <div className='justify-content-between d-flex'>
           <div>
-            <h1 className='main-heading'>Customer Dashboard</h1>
+            <h1 className='main-heading'>Clients Dashboard</h1>
             <span>Manage Client Data</span>
           </div>
           <div>
@@ -132,7 +123,7 @@ const CustomerDash = () => {
         <div className='col-lg-6 col-md-6 col-12'>
           <form className="d-flex">
             <input
-              style={{ borderRadius: "15px", padding: "8px 16px", width:"320px" }}
+              style={{ borderRadius: "15px", padding: "8px 16px", width: "320px" }}
               className="form-control me-2"
               type="search"
               placeholder="Search"
@@ -142,15 +133,37 @@ const CustomerDash = () => {
             />
           </form>
         </div>
-        <div className='col-lg-6 col-md-6 col-12' style={{ display: "flex", justifyContent: "end" }}>
+        <div className='col-lg-6 col-md-6 col-12' style={{ display: "flex", justifyContent: "end", gap:"10px" }}>
           <div className="dropdown mb-3">
-            <button className=" btn-grey dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-              Sort by: {sortOption === 'active' ? 'Active' : sortOption === 'inactive' ? 'Inactive' : 'Reset'}
+            <button className="btn-grey dropdown-toggle" type="button" id="dropdownMenuButtonStatus" data-bs-toggle="dropdown" aria-expanded="false">
+              Status: {sortOption === 'Active' ? 'Active' : sortOption === 'Inactive' ? 'Inactive' : 'All'}
             </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><button className="dropdown-item" onClick={sortByActive}>Active</button></li>
-              <li><button className="dropdown-item" onClick={sortByInactive}>Inactive</button></li>
-              <li><button className="dropdown-item" onClick={resetSort}>Reset</button></li>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButtonStatus">
+              <li><button className="dropdown-item" onClick={() => sortByStatus('Active')}>Active</button></li>
+              <li><button className="dropdown-item" onClick={() => sortByStatus('Inactive')}>Inactive</button></li>
+              <li><button className="dropdown-item" onClick={resetSort}>All</button></li>
+            </ul>
+          </div>
+          <div className="dropdown mb-3">
+            <button className="btn-grey dropdown-toggle" type="button" id="dropdownMenuButtonPolicy" data-bs-toggle="dropdown" aria-expanded="false">
+              Claim: {sortOption === 'Submitted' ? 'Submitted' : sortOption === 'In Process' ? 'In Process' : 'None'}
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButtonPolicy">
+              <li><button className="dropdown-item" onClick={() => sortByPolicy('Submitted')}>Submitted</button></li>
+              <li><button className="dropdown-item" onClick={() => sortByPolicy('In Process')}>In Process</button></li>
+              <li><button className="dropdown-item" onClick={resetSort}>None</button></li>
+            </ul>
+          </div>
+          <div className="dropdown mb-3">
+            <button className="btn-grey dropdown-toggle" type="button" id="dropdownMenuButtonRenewal" data-bs-toggle="dropdown" aria-expanded="false">
+              Renewal: {sortOption === '2 Month' ? '2 Month' : sortOption === '3 Month' ? '3 Month': sortOption === '4 Month' ? '4 Month': sortOption === '5 Month' ? '5 Month'  : 'None'}
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButtonRenewal">
+              <li><button className="dropdown-item" onClick={() => sortByRenewal('2 Month')}>2 Month</button></li>
+              <li><button className="dropdown-item" onClick={() => sortByRenewal('3 Month')}>3 Month</button></li>
+              <li><button className="dropdown-item" onClick={() => sortByRenewal('4 Month')}>4 Month</button></li>
+              <li><button className="dropdown-item" onClick={() => sortByRenewal('5 Month')}>5 Month</button></li>
+              <li><button className="dropdown-item" onClick={resetSort}>None</button></li>
             </ul>
           </div>
         </div>

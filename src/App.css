@@ -246,5 +246,11 @@ width: 100% !important;
   #root > div > div.full-width-screen.padding-given > div > div > div > div{
     flex-direction: column;
   }
+  #root > div > div.flex-grow-1 > div > div > div.container.mt-5 > div > div > div > div{
+   
+      flex-direction: column !important;
+      gap: 14px;
+  
+  }
 
 }

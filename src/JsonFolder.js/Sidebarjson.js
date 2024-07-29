@@ -90,22 +90,22 @@ const data = {
       },
       {
         children: [
-          { name: "Manage Client", link: "/dashboard-customer" }
+          { name: "Clients", link: "/dashboard-customer" }
         ]
       },
+      // {
+      //   children: [
+      //     { name: "Policies", link: "/policy-dashboard" }
+      //   ]
+      // },
+      // {
+      //   children: [
+      //     { name: "Billing history", link: "/billing-dashboard" }
+      //   ]
+      // },
       {
         children: [
-          { name: "Policies", link: "/policy-dashboard" }
-        ]
-      },
-      {
-        children: [
-          { name: "Billing history", link: "/billing-dashboard" }
-        ]
-      },
-      {
-        children: [
-          { name: "Support ticket", link: "/support-dashboard" }
+          { name: "Support", link: "/support-dashboard" }
         ]
       },
       {
@@ -115,20 +115,25 @@ const data = {
       },
       {
         children: [
-          { name: "FAQ", link: "/knowledge-base-accordion" }
+          { name: "Quotes", link: "/quotes" }
         ]
       },
+      // {
+      //   children: [
+      //     { name: "FAQ", link: "/knowledge-base-accordion" }
+      //   ]
+      // },
       
-      {
-        children: [
-          { name: "Activity Log", link: "/activity-log" }
-        ]
-      },
-      {
-        children: [
-          { name: "Notification", link: "#" }
-        ]
-      },
+      // {
+      //   children: [
+      //     { name: "Activity Log", link: "/activity-log" }
+      //   ]
+      // },
+      // {
+      //   children: [
+      //     { name: "Notification", link: "#" }
+      //   ]
+      // },
       {
         children: [
           { name: "How to use", link: "/create-customer" }

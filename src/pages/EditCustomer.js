@@ -14,8 +14,8 @@ const BUTTONS = [
 
 const EditCustomer = () => {
 
-    const { id } = useParams(); // Fetching the id parameter from the URL
-    console.log(id);
+  const { id } = useParams(); // Fetching the id parameter from the URL
+  console.log(id);
 
   const [elementCount, setElementCount] = useState(1); // Start with one set of fields
 
@@ -136,7 +136,7 @@ const EditCustomer = () => {
       <div className="col-lg-12 col-md-12 col-12">
         <div className="control-overwidth padding-given">
           <form>
-            <div className="container">
+            <div>
               <div className="row justify-content-between d-flex">
                 <h1 className='main-heading'>Edit Customer</h1>
                 <span>add new customer</span>
@@ -208,7 +208,7 @@ const EditCustomer = () => {
 
 
 
-                 
+
 
 
 
@@ -224,11 +224,11 @@ const EditCustomer = () => {
 
 
                 <div className="col-md-12 col-lg-6 col-12" >
-                  <div style={{textAlign:"center", marginBottom:"30px"}}>
+                  <div style={{ textAlign: "center", marginBottom: "30px" }}>
                     <img
                       src={previewImage || 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'}
                       className="img-fluid"
-                     style={{width: "150px", height: "150px", borderRadius: "150px", backgroundPosition:"center", backgroundSize:"cover"}}
+                      style={{ width: "150px", height: "150px", borderRadius: "150px", backgroundPosition: "center", backgroundSize: "cover" }}
                       alt="Preview"
                     />
                   </div>
@@ -272,74 +272,74 @@ const EditCustomer = () => {
 
 
                 <div className='col-12'>
-                <div className='mb-3'>
-                  <div className="form-group">
-                    <label htmlFor="policy-type" className="form-label">Policy Type</label>
-                    <select
-                      id="policy-type"
-                      name="policy-type"
-                      className="form-select"
-                      value={policyType}
-                      onChange={handlePolicyTypeChange}
-                      style={{ marginBottom: "20px", width: "50%" }}
-                    >
-                      <option value="individual">Individual</option>
-                      <option value="couple">Couple</option>
-                      <option value="family">Family</option>
-                      <option value="group">Group</option>
-                    </select>
+                  <div className='mb-3'>
+                    <div className="form-group">
+                      <label htmlFor="policy-type" className="form-label">Policy Type</label>
+                      <select
+                        id="policy-type"
+                        name="policy-type"
+                        className="form-select"
+                        value={policyType}
+                        onChange={handlePolicyTypeChange}
+                        style={{ marginBottom: "20px", width: "50%" }}
+                      >
+                        <option value="individual">Individual</option>
+                        <option value="couple">Couple</option>
+                        <option value="family">Family</option>
+                        <option value="group">Group</option>
+                      </select>
 
-                    {/* Conditional rendering based on policy type */}
+                      {/* Conditional rendering based on policy type */}
 
-                    {policyType === 'couple' || policyType === 'family' || policyType === 'group' ? (
-                      <div>
-                        {[...Array(elementCount)].map((_, index) => (
-                          <div key={index}>
-                            <div style={{ width: "1320px", marginTop: "10px" }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: "20px", justifyContent: "space-between" }}>
-                                <div className='mb-3'>
-                                  <label style={{ marginBottom: "8px" }} htmlFor={`name-${index}`}>Name:</label>
-                                  <input className='form-control' type="text" id={`name-${index}`} name={`name-${index}`} style={{width:"300px"}} />
-                                </div>
-              
-                                <div className="form-group mb-3">
-                                  <label htmlFor={`relationship-${index}`} className="form-label">Relationship</label>
-                                  <select id={`relationship-${index}`} name={`relationship-${index}`} className="form-select" style={{width:"300px"}}>
-                                    <option value="Wife">Wife</option>
-                                    <option value="Partner">Partner</option>
-                                    <option value="Child">Child</option>
-                                    <option value="Employee">Employee</option>
-                                  </select>
-                                </div>
-              
-                                <div className='mb-3'>
-                                  <NationalityDrop id={`nationality-${index}`} name={`nationality-${index}`} className="form-control" />
-                                </div>
-              
-                                <div className='mb-3'>
-                                  <label style={{ marginBottom: "8px" }} htmlFor={`date-of-birth-${index}`}>Date of Birth:</label>
-                                  <input className='form-control' type="date" id={`date-of-birth-${index}`} name={`date-of-birth-${index}`} style={{width:"300px"}} />
+                      {policyType === 'couple' || policyType === 'family' || policyType === 'group' ? (
+                        <div>
+                          {[...Array(elementCount)].map((_, index) => (
+                            <div key={index}>
+                              <div style={{ width: "1320px", marginTop: "10px" }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: "20px", justifyContent: "space-between" }}>
+                                  <div className='mb-3'>
+                                    <label style={{ marginBottom: "8px" }} htmlFor={`name-${index}`}>Name:</label>
+                                    <input className='form-control' type="text" id={`name-${index}`} name={`name-${index}`} style={{ width: "300px" }} />
+                                  </div>
+
+                                  <div className="form-group mb-3">
+                                    <label htmlFor={`relationship-${index}`} className="form-label">Relationship</label>
+                                    <select id={`relationship-${index}`} name={`relationship-${index}`} className="form-select" style={{ width: "300px" }}>
+                                      <option value="Wife">Wife</option>
+                                      <option value="Partner">Partner</option>
+                                      <option value="Child">Child</option>
+                                      <option value="Employee">Employee</option>
+                                    </select>
+                                  </div>
+
+                                  <div className='mb-3'>
+                                    <NationalityDrop id={`nationality-${index}`} name={`nationality-${index}`} className="form-control" />
+                                  </div>
+
+                                  <div className='mb-3'>
+                                    <label style={{ marginBottom: "8px" }} htmlFor={`date-of-birth-${index}`}>Date of Birth:</label>
+                                    <input className='form-control' type="date" id={`date-of-birth-${index}`} name={`date-of-birth-${index}`} style={{ width: "300px" }} />
+                                  </div>
                                 </div>
                               </div>
                             </div>
+                          ))}
+
+                          <div style={{ textAlign: "end" }}>
+                            <button type="button" className="btn-grey mb-0" onClick={handleAddFields}>Add More</button>
                           </div>
-                        ))}
-              
-                        <div style={{ textAlign: "end" }}>
-                          <button type="button" className="btn-grey mb-0" onClick={handleAddFields}>Add More</button>
                         </div>
-                      </div>
-                    ) : null}
-                 
+                      ) : null}
+
+
+
+                    </div>
+
 
 
                   </div>
 
-
-
                 </div>
-
-              </div>
 
 
 
@@ -467,10 +467,10 @@ const EditCustomer = () => {
 
 export default EditCustomer;
 
-const handleAddFields = ()=>{
- 
+const handleAddFields = () => {
+
   var container = document.getElementById('new-input-container');
-  
+
   const newElem = document.createElement("input");
   newElem.setAttribute("type", "text");
   container.appendChild(newElem);

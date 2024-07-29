@@ -15,8 +15,8 @@ const CustSupportSide = () => {
                     <div className='row'>
                         <div className='col-12'>
                             <div className='control-cust d-flex align-items-center justify-content-between'>
-                                <h3 className='font-given-16'>Bill Detail</h3>
-                                <button className='btn-grey' style={{ margin: '30px 0px' }}>Success</button>
+                                <h3 className='font-given-16'>Support Ticket</h3>
+                                <button className='btn-grey' style={{ margin: '30px 0px' }}>Open</button>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@ const CustSupportSide = () => {
 
                         </div>
                         <div className='cust-btn mb-3 flex-column'>
-                            <button className='btn-grey-padding' style={{ margin: '0px 0px' }}>View Mail</button>
+                           <span>This issue</span>
 
                         </div>
                     </div>
@@ -39,7 +39,7 @@ const CustSupportSide = () => {
 
                         </div>
                         <div className='cust-btn mb-3 flex-column'>
-                            <button className='btn-grey-padding' style={{ margin: '0px 0px' }}>View Mail</button>
+                           <span>This is Response</span>
 
                         </div>
                     </div>
@@ -64,9 +64,10 @@ const CustSupportSide = () => {
               
 
                 <div className='row'>
-                    <div className='d-flex flex-row gap-2'>
-                        <button className=' text-black contact-update-en font-given-14'>Add Comment</button>
-                        <button className=' text-black contact-update-en font-given-14'>Push to Mail</button>
+                    <div className='d-flex justify-content-center align-items-center
+                     flex-row gap-2'>
+                        <button className=' text-black contact-update-en font-given-14'>Update</button>
+                     
                         <button className=' text-black contact-update-en font-given-14'>Close Ticket</button>
                     </div>
 
