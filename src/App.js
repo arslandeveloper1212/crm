@@ -22,6 +22,8 @@ import SupportTicketAdmin from './pages/Admin/SupportTicketAdmin';
 import CreateUserAdmin from './pages/Admin/CreateUserAdmin';
 import EditUserAdmin from './components/Admin/EditUserAdmin';
 import KnowledgeBaseFAQAdmin from './pages/Admin/KnowledgeBaseFAQAdmin';
+import Quotes from './pages/Quotes';
+
 
 function App() {
   return (
@@ -45,8 +47,9 @@ function App() {
         <Route path="/dashboard-customer" element={<CustomerDash />} />
         <Route path="/policy-dashboard" element={<PolicyDashboard />} />
         <Route path="/billing-dashboard" element={<BillingDashboard />} />
+        <Route path="/quotes" element={<Quotes />} />
         <Route path="/support-dashboard" element={<SupportDashboardLayout />} />
-        
+       
       </Route>
 
       {/* Admin Routes */}
