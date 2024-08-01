@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
@@ -18,11 +19,14 @@ import HomeA from './pages/Admin/HomeA';
 import ClientLayout from './pages/ClientLayout';
 import AdminLayout from './pages/Admin/AdminLayout';
 import ManageUsers from './pages/Admin/ManageUsers';
-import SupportTicketAdmin from './pages/Admin/SupportTicketAdmin';
+
 import CreateUserAdmin from './pages/Admin/CreateUserAdmin';
 import EditUserAdmin from './components/Admin/EditUserAdmin';
 import KnowledgeBaseFAQAdmin from './pages/Admin/KnowledgeBaseFAQAdmin';
 import Quotes from './pages/Quotes';
+import ViewQuote from './pages/Admin/ViewQuote';
+import SupportTicketAdmin from './pages/Admin/SupportTicketAdmin';
+import SupportTicketAdminLayout from './components/Admin/SupportTicketLayout';
 
 
 function App() {
@@ -48,6 +52,7 @@ function App() {
         <Route path="/policy-dashboard" element={<PolicyDashboard />} />
         <Route path="/billing-dashboard" element={<BillingDashboard />} />
         <Route path="/quotes" element={<Quotes />} />
+        <Route path="/view-quotes/:id" element={<ViewQuote />} />
         <Route path="/support-dashboard" element={<SupportDashboardLayout />} />
        
       </Route>
@@ -58,7 +63,7 @@ function App() {
         <Route index element={<Navigate to="/admin/home" />} />
         <Route path="/admin/home" element={<HomeA />} />
         <Route path="/admin/manage-users" element={<ManageUsers/>} />
-        <Route path="/admin/support-ticket" element={<SupportTicketAdmin/>} />
+        <Route path="/admin/support-ticket" element={<SupportTicketAdminLayout/>} />
         <Route path="/admin/knowledge-base-faq" element={<KnowledgeBaseFAQAdmin/>} />
         <Route path="/admin/create-user" element={<CreateUserAdmin/>} />
         <Route path="/admin/update-user/:id" element={<EditUserAdmin/>} />

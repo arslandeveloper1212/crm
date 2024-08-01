@@ -1,4 +1,5 @@
 import React from 'react'
+import Dashboard from '../components/Dashboard'
 
 
 const Home = () => {
@@ -12,7 +13,7 @@ return (
                         <h1 className='main-heading'>Home</h1>
                         <span>home</span>
 
-                  
+                            <Dashboard/>
 
 
 

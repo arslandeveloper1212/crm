@@ -200,6 +200,12 @@ border-radius:20px !important;
 }
 
 
+
+
+
+
+
+
 @media screen and (max-width:992px) {
   #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4 > div.col-12 > div > div > div > div > div{
   flex-direction: column;
