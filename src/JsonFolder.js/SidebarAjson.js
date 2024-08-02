@@ -38,7 +38,11 @@ const dataadmin = {
             { name: "Knowledge Base", link: "/admin/knowledge-base-faq" }
           ]
         },
-      
+        {
+          children: [
+            { name: "Billing Dashboard", link: "/admin/billing-dashboard" }
+          ]
+        },
       
     
        

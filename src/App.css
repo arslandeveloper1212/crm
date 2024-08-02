@@ -199,6 +199,9 @@ border-radius:20px !important;
   margin: 10px 0px;
 }
 
+#root > div > div.custom-width-first{
+  display: block;
+}
 
 
 
@@ -258,5 +261,15 @@ width: 100% !important;
       gap: 14px;
   
   }
+
+  #root > div > div.custom-width-first{
+    display: none;
+  }
+  
+
+}
+
+@media screen and (max-width:769px) {
+
 
 }

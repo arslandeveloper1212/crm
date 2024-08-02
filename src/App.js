@@ -27,6 +27,7 @@ import Quotes from './pages/Quotes';
 import ViewQuote from './pages/Admin/ViewQuote';
 import SupportTicketAdmin from './pages/Admin/SupportTicketAdmin';
 import SupportTicketAdminLayout from './components/Admin/SupportTicketLayout';
+import BillingDashboardAdmin from './pages/Admin/BillingDashboardAdmin';
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
         <Route path="/admin/knowledge-base-faq" element={<KnowledgeBaseFAQAdmin/>} />
         <Route path="/admin/create-user" element={<CreateUserAdmin/>} />
         <Route path="/admin/update-user/:id" element={<EditUserAdmin/>} />
+        <Route path="/admin/billing-dashboard" element={<BillingDashboardAdmin/>} />
         {/* Add more admin routes here as needed */}
       </Route>
     </Routes>
