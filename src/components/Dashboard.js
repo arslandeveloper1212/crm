@@ -13,38 +13,45 @@ const pieData = [
 
 // Data for the bar chart
 const barData = [
-    { name: 'Page A', uv: 4000, pv: 2400 },
-    { name: 'Page B', uv: 3000, pv: 1398 },
-    { name: 'Page C', uv: 2000, pv: 9800 },
-    { name: 'Page D', uv: 2780, pv: 3908 },
-    { name: 'Page E', uv: 1890, pv: 4800 },
-    { name: 'Page F', uv: 2390, pv: 3800 },
-    { name: 'Page G', uv: 3490, pv: 4300 }
+    { name: 'Jan', uv: 4000, pv: 2400 },
+    { name: 'Feb', uv: 3000, pv: 1398 },
+    { name: 'Mar', uv: 2000, pv: 9800 },
+    { name: 'Apr', uv: 2780, pv: 3908 },
+    { name: 'May', uv: 1890, pv: 4800 },
+    { name: 'Jun', uv: 2390, pv: 3800 },
+    { name: 'Aug', uv: 3410, pv: 4300 },
+    { name: 'Sep', uv: 2390, pv: 1800 },
+    { name: 'Oct', uv: 1490, pv: 3300 },
+    { name: 'Nov', uv: 4390, pv: 6800 },
+    { name: 'Dec', uv: 3490, pv: 4300 }
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
+
+const customTicks = [250, 500, 1000, 2000, 3000, 4000, 5000, 10000,20000,30000,40000];
+
 const Dashboard = () => {
     return (
         <div className="container-fluid my-4">
-            <div className="row g-3" style={{position:"relative", top:"-13px"}}>
+            <div className="row g-3" style={{ position: "relative", top: "-13px" }}>
                 {/* Cards Section */}
-                <div className="col-md-6 col-lg-6 col-12" style={{display:"flex",alignItems:"center", justifyContent:"center"}}>
+                <div className="col-md-6 col-lg-6 col-12" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <div className="row row-cols-1 g-3">
                         <div className="d-flex flex-row gap-3">
                             <div className="col">
-                                <div className="card">
-                                    <div className="card-body">
+                                <div className="card" style={{ border: "none" }}>
+                                    <div className="card-body" style={{ background: "#0045e8", color: "white", borderRadius: "10px" }}>
                                         <h5 className="card-title">Total Clients</h5>
                                         <p className="card-text">40</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="col">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h5 className="card-title">Open Tickets</h5>
+                            <div className="col" >
+                                <div className="card" style={{ border: "none" }}>
+                                    <div className="card-body" style={{ background: "#dca52c", color: "white", borderRadius: "10px" }} >
+                                        <h5 className="card-title">Total Premiums</h5>
                                         <p className="card-text">34</p>
                                     </div>
                                 </div>
@@ -53,17 +60,17 @@ const Dashboard = () => {
 
                         <div className="d-flex flex-row gap-3">
                             <div className="col">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h5 className="card-title">Total Revenue</h5>
+                                <div className="card" style={{ border: "none" }}>
+                                    <div className="card-body" style={{ background: "#2d881a", color: "white", borderRadius: "10px" }}>
+                                        <h5 className="card-title">Total Commissions</h5>
                                         <p className="card-text">$5000</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="col">
-                                <div className="card">
-                                    <div className="card-body">
+                                <div className="card" style={{ border: "none" }}>
+                                    <div className="card-body" style={{ background: "#d03a2c", color: "white", borderRadius: "10px" }}>
                                         <h5 className="card-title">Pending Orders</h5>
                                         <p className="card-text">15</p>
                                     </div>
@@ -120,68 +127,75 @@ const Dashboard = () => {
                 </div>
             </div>
 
-               {/* Dropdowns Section */}
-               <div className="row mt-4">
-               <div className="col-md-4 col-sm-12 mb-3">
-                   <div className="form-group">
-                       <label htmlFor="select-gender" className="form-label">Gender</label>
-                       <select id="select-gender" name="select-gender" className="form-select">
-                           <option value="male">Male</option>
-                           <option value="female">Female</option>
-                       </select>
-                   </div>
-               </div>
+            {/* Dropdowns Section */}
+            <div className="row mt-4 ftta">
+                <div className="d-flex mb-3 align-items-center">
+                    <div className="form-group">
+                        <label htmlFor="select-insurer" className="form-label">Insurer</label>
+                        <select id="select-insurer" name="select-insurer" className="form-select">
+                            <option value="one">Insurer1</option>
+                            <option value="two">Insurer2</option>
+                            <option value="three">Insurer3</option>
+                            <option value="four">Insurer4</option>
+                            <option value="five">Insurer5</option>
+                        </select>
+                    </div>
+                </div>
 
-               <div className="col-md-4 col-sm-12 mb-3">
-                   <div className="form-group">
-                       <label htmlFor="select-age" className="form-label">Age Group</label>
-                       <select id="select-age" name="select-age" className="form-select">
-                           <option value="18-24">18-24</option>
-                           <option value="25-34">25-34</option>
-                           <option value="35-44">35-44</option>
-                           <option value="45-54">45-54</option>
-                           <option value="55+">55+</option>
-                       </select>
-                   </div>
-               </div>
-
-               <div className="col-md-4 col-sm-12 mb-3">
-                   <div className="form-group">
-                       <label htmlFor="select-location" className="form-label">Location</label>
-                       <select id="select-location" name="select-location" className="form-select">
-                           <option value="north-america">North America</option>
-                           <option value="europe">Europe</option>
-                           <option value="asia">Asia</option>
-                           <option value="south-america">South America</option>
-                           <option value="africa">Africa</option>
-                       </select>
-                   </div>
-               </div>
-           </div>
-
-            {/* Bar Chart Section */}
-            <div className="row mt-4">
-                <div className="col-12">
-                    <div className="bar-chart-container d-flex justify-content-center">
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart
-                                data={barData}
-                                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <PieTooltip />
-                                <Legend />
-                                <Bar dataKey="pv" fill="#8884d8" />
-                                <Bar dataKey="uv" fill="#82ca9d" />
-                            </BarChart>
-                        </ResponsiveContainer>
+                <div className="d-flex mb-3 align-items-center">
+                    <div className="form-group">
+                        <label htmlFor="select-location" className="form-label">Country</label>
+                        <select id="select-location" name="select-location" className="form-select">
+                            <option value="north-america">North America</option>
+                            <option value="europe">Europe</option>
+                            <option value="asia">Asia</option>
+                            <option value="south-america">South America</option>
+                            <option value="africa">Africa</option>
+                        </select>
                     </div>
                 </div>
             </div>
 
-         
+            {/* Bar Chart Section */}
+            <div className="row mt-4">
+                <div className='d-flex justify-content-between align-items-center'>
+
+                    <h2>Premium Details</h2>
+                    <div className='flex-column d-flex'>
+                        <span>Quotes</span>
+                        <span>Premium</span>
+                    </div>
+                </div>
+                <div className="col-12">
+                <div className="bar-chart-container d-flex justify-content-center">
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart
+                    data={barData}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis
+                      domain={[250, 'auto']} // Set the Y-axis to start from 250 and auto-adjust maximum value
+                      ticks={customTicks}    // Set custom tick values
+                      tickFormatter={(value) => {
+                        if (value) {
+                          return `${value / 1000}k`; // Format values as 'k' for thousands
+                        }
+                        return value;
+                      }}
+                    />
+                    <PieTooltip />
+                    <Legend />
+                    <Bar dataKey="pv" fill="#d03a2c" />
+                    <Bar dataKey="uv" fill="#489dcc" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+                </div>
+            </div>
+
+
         </div>
     );
 };

@@ -2,23 +2,30 @@ import React, { useState, useEffect } from 'react';
 import data from '../JsonFolder.js/Sidebarjson'; // Adjust path as needed
 import { Link } from 'react-router-dom';
 import img from '../img/vibgreon.png';
-import MobSidebar from './MobSidebar';
 import './Sidebar.css'; // Import the CSS file
-import '../App.css'
 
-const Sidebar = () => {
+const MobSidebar = () => {
   const [activeFolder, setActiveFolder] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false); // Initially hidden on mobile
 
   // Function to handle click on folder item
   const handleFolderClick = (index) => {
     setActiveFolder(index === activeFolder ? null : index); // Toggle active folder index
   };
 
-  // Handle screen resize
+  // Function to handle sidebar toggle button
+  const handleSidebarToggle = () => {
+    setIsSidebarVisible(!isSidebarVisible); // Toggle sidebar visibility
+  };
+
+  // Handle sidebar visibility based on screen size
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 992);
+      if (window.innerWidth > 992) {
+        setIsSidebarVisible(true); // Show sidebar on larger screens
+      } else {
+        setIsSidebarVisible(false); // Hide sidebar on smaller screens
+      }
     };
 
     window.addEventListener('resize', handleResize);
@@ -27,13 +34,28 @@ const Sidebar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  if (isMobile) {
-    return <MobSidebar />;
-  }
-
   return (
-    <div className="sidebar-container">
-      <div className="custom-width-first" style={{ backgroundColor: "#d9d9d9", height: "100vh", position: "relative", top: "-20px" }}>
+    <div>
+      {/* Menu Button */}
+      <button 
+        className={`menu-button ${isSidebarVisible ? 'sidebar-hidden' : ''}`} 
+        onClick={handleSidebarToggle}
+        aria-label="Open sidebar"
+      >
+        ☰ {/* Menu icon (hamburger) */}
+      </button>
+
+      {/* Close Button */}
+      <button 
+        className={`close-button ${isSidebarVisible ? '' : 'sidebar-hidden'}`} 
+        onClick={handleSidebarToggle}
+        aria-label="Close sidebar"
+      >
+        ✕ {/* Close icon */}
+      </button>
+
+      {/* Sidebar Content */}
+      <div className={`sidebar-content ${isSidebarVisible ? '' : 'sidebar-hidden'}`}>
         <div className='broker-content'>
           <img src={img} alt="Logo" />
           <div className='d-flex flex-column'>
@@ -68,4 +90,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default MobSidebar;
