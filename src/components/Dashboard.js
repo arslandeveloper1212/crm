@@ -43,7 +43,7 @@ const Dashboard = () => {
                                 <div className="card" style={{ border: "none" }}>
                                     <div className="card-body" style={{ background: "#0045e8", color: "white", borderRadius: "10px",height:"14vh" }}>
                                         <h5 className="card-title">Total Clients</h5>
-                                        <p className="card-text">40</p>
+                                        <p className="card-text cscs">40</p>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@ const Dashboard = () => {
                                 <div className="card" style={{ border: "none" }}>
                                     <div className="card-body" style={{ background: "#dca52c", color: "white", borderRadius: "10px",height:"14vh" }} >
                                         <h5 className="card-title">Total Premiums</h5>
-                                        <p className="card-text">34</p>
+                                        <p className="card-text cscs">34</p>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@ const Dashboard = () => {
                                 <div className="card" style={{ border: "none" }}>
                                     <div className="card-body" style={{ background: "#2d881a", color: "white", borderRadius: "10px", height:"14vh" }}>
                                         <h5 className="card-title">Total Commissions</h5>
-                                        <p className="card-text">$5000</p>
+                                        <p className="card-text cscs">$5000</p>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@ const Dashboard = () => {
                                 <div className="card" style={{ border: "none" }}>
                                     <div className="card-body" style={{ background: "#d03a2c", color: "white", borderRadius: "10px",height:"14vh" }}>
                                         <h5 className="card-title">Pending Orders</h5>
-                                        <p className="card-text">15</p>
+                                        <p className="card-text cscs">15</p>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@ const Dashboard = () => {
 
             {/* Dropdowns Section */}
             <div className="row mt-4 ftta">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select-csrp" aria-label="Default select example">
                     <option style={{ padding: "20px;" }} selected>Insurer</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -141,7 +141,7 @@ const Dashboard = () => {
                 </select>
 
 
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select-csrp" aria-label="Default select example">
                     <option selected>Country</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
