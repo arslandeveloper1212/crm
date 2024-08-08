@@ -37,7 +37,7 @@ const Table = ({ items, onDelete }) => {
               <td>
                 <button className={`btn ${item.status === 'Active' ? 'btn-active' : 'btn-danger'}`}>{item.status}</button>
               </td>
-              <td>
+              <td style={{display:"flex", alignItems:"center"}}>
                 <Link to={`/view-customer/${item.id}`}>
                   <FaEye style={{ color: "#1a846a", fontSize: "22px" }} />
                 </Link>
