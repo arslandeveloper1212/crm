@@ -1,59 +1,48 @@
-
 .custom-width-first {
   width: 100% !important;
   max-width: 234px !important;
 }
 
-
-.custom-width-middle{
+.custom-width-middle {
   width: 100%;
   max-width: 1142px !important;
-  
- 
 }
 
-.custom-width-last{
+.custom-width-last {
   width: 100%;
- 
+
   max-width: 434px !important;
 }
 
-
-
-.name-side{
-  
+.name-side {
   font-size: 14px;
   padding-left: 29px;
-  
 }
-.li-side{
+.li-side {
   list-style-type: none;
   cursor: pointer;
- gap: 10px !important;
- 
+  gap: 10px !important;
+
   padding: 10px 5px;
   font-size: 16px;
   margin-bottom: 4px;
 }
 
-.btn-active{
-color: #008767 !important;
-background-color: #16C098 !important;
-border:1px solid  #008767 !important;
-padding: 4px 12px;
-border-radius:20px !important;
-
+.btn-active {
+  color: #008767 !important;
+  background-color: #16c098 !important;
+  border: 1px solid #008767 !important;
+  padding: 4px 12px;
+  border-radius: 20px !important;
 }
 
-.btn-danger{
+.btn-danger {
   color: #870000 !important;
   background-color: #c01616 !important;
-  border:1px solid  #870000 !important;
+  border: 1px solid #870000 !important;
   padding: 4px 12px;
-  border-radius:20px !important;
+  border-radius: 20px !important;
 }
-
-
 
 .broker-content {
   display: flex !important;
@@ -65,18 +54,16 @@ border-radius:20px !important;
   gap: 16px;
 }
 
-.broker-content span{
- 
+.broker-content span {
   font-size: 14px;
 }
 
-.broker-content strong{
-  
+.broker-content strong {
   font-size: 16px;
 }
 
 .drag-area {
-  border: 1px solid #D3D3D3;
+  border: 1px solid #d3d3d3;
   padding: 40px 20px;
   text-align: center;
   border-radius: 5px;
@@ -84,21 +71,20 @@ border-radius:20px !important;
   font-size: 16px;
 }
 
-.drag-area h3{
-  color: #D3D3D3;
+.drag-area h3 {
+  color: #d3d3d3;
 }
 
 .drag-over {
   background-color: #e9ecef;
 }
 
-.control-overwidth{
+.control-overwidth {
   width: 100% !important;
   gap: 20px;
 }
 
-.btn-grey{
- 
+.btn-grey {
   border: none;
   color: var(--dark-grey);
   padding: 8px 16px !important;
@@ -106,7 +92,7 @@ border-radius:20px !important;
   font-size: 16px;
 }
 
-.btn-grey-padding{
+.btn-grey-padding {
   border: none;
   color: var(--dark-grey);
   padding: 4px 7px !important;
@@ -115,24 +101,23 @@ border-radius:20px !important;
   background-color: #d9d9d9;
 }
 
-.cust-name h3{
+.cust-name h3 {
   font-weight: 600;
   font-size: 16px;
 }
 
-.cust-name span{
+.cust-name span {
   font-size: 14px;
 }
 
-.font-given-14{
+.font-given-14 {
   font-size: 14px;
   font-weight: 400;
 }
 
-.font-given-16{
+.font-given-16 {
   font-size: 16px;
   font-weight: 600;
-
 }
 
 .button-padding {
@@ -143,8 +128,8 @@ border-radius:20px !important;
   cursor: pointer;
   border-radius: 15px;
 }
-.buttonPressed{
- padding: 5px 10px;
+.buttonPressed {
+  padding: 5px 10px;
   margin-right: 10px;
   background-color: #cccccc;
   border: 1px solid #ccc;
@@ -153,44 +138,42 @@ border-radius:20px !important;
 }
 
 .profile-data {
- 
   width: 150px;
   height: 150px;
   margin-bottom: 38px;
   background-position: center;
   background-size: cover;
- 
 }
 
-.viewcustomer-get{
+.viewcustomer-get {
   display: flex;
   flex-direction: row;
 }
 
-.str-bold-h{
+.str-bold-h {
   font-weight: bold;
 }
 
-.btn-green{
+.btn-green {
   background-color: #008766;
   color: white;
   padding: 5px 51px;
   border: none;
 }
-.ftss{
+.ftss {
   background-color: rgb(245, 245, 245) !important;
-   
-    border-top: 0 !important;
-    border-right: 0 !important;
-    border-bottom: 0 !important;
-    border-left: 2px solid rgb(197, 197, 197) !important;
-    border-radius: 0px !important;
-    margin: 10px 0px;
+
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-left: 2px solid rgb(197, 197, 197) !important;
+  border-radius: 0px !important;
+  margin: 10px 0px;
 }
 
-.ftss-pp{
+.ftss-pp {
   background-color: rgb(245, 245, 245) !important;
-   
+
   border-top: 0 !important;
   border-right: 0 !important;
   border-bottom: 1px solid rgb(197, 197, 197) !important;
@@ -199,88 +182,255 @@ border-radius:20px !important;
   margin: 10px 0px;
 }
 
-#root > div > div.custom-width-first{
+#root > div > div.custom-width-first {
   display: block;
 }
 
-.row.ftta {
+.row .ftta {
   display: flex;
-  justify-content: flex-end; /* Aligns items to the end of the row */
-  width: 100%; /* Full width of the container */
-}
-
-.mb-3 {
-  margin-bottom: 1rem; /* Bootstrap's default margin-bottom */
+  justify-content: flex-end;
+  gap: 1rem; /* Adjust the gap between the select elements as needed */
+  align-items: center; /* Align items vertically centered */
 }
 
 .form-select {
-  width: 190px; /* Fixed width for dropdown */
+  --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%23343a40%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e");
+  display: inline-block !important; /* Ensure that dropdowns are treated as inline-block elements */
+  width: 10% !important; /* Adjust the width as needed */
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-image: var(--bs-form-select-bg-img),
+    var(--bs-form-select-bg-icon, none);
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-
-
-
-@media screen and (max-width:992px) {
-  #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4 > div.col-12 > div > div > div > div > div{
+.cpst {
+  position: absolute;
+  right: 0px !important;
+  top: 98px !important;
+  display: flex;
   flex-direction: column;
-  
+  gap: 7px;
+  width: 12% !important;
+}
+
+#root > div > div.flex-grow-1 > div > div > div > div > div.row.g-3 > div.col-md-6.col-lg-6.col-12.d-flex.flex-column > div.pie-chart-container.d-flex.justify-content-center.mb-3 > div > div > svg{
+  position: relative;
+    left: -64px !important;
+}
+
+@media screen and (max-width: 992px) {
+  #root
+    > div
+    > div
+    > div
+    > div
+    > form
+    > div
+    > div
+    > div.col-md-6.col-lg-6.col-12.py-4
+    > div.col-12
+    > div
+    > div
+    > div
+    > div
+    > div {
+    flex-direction: column;
   }
-  #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4 > div.col-12 > div > div > div > div > div{
+  #root
+    > div
+    > div
+    > div
+    > div
+    > form
+    > div
+    > div
+    > div.col-md-6.col-lg-6.col-12.py-4
+    > div.col-12
+    > div
+    > div
+    > div
+    > div
+    > div {
     display: flex;
     gap: 20px;
     align-items: start !important;
     justify-content: start !important;
   }
-  #root > div > div > div > div > form > div > div{
+  #root > div > div > div > div > form > div > div {
     flex-direction: column;
   }
-  .viewcustomer-get{
+  .viewcustomer-get {
     flex-direction: column;
     gap: 14px;
     padding: 0px !important;
   }
-  #root > div > div.full-width-screen.padding-given > div > div > div{
-  
-      display: flex;
-      flex-direction: column !important;
-      gap: 14px;
-  
+  #root > div > div.full-width-screen.padding-given > div > div > div {
+    display: flex;
+    flex-direction: column !important;
+    gap: 14px;
   }
-  #root > div > div > div > div > form > div > div > div.col-md-6.col-lg-6.col-12.py-4{
+  #root
+    > div
+    > div
+    > div
+    > div
+    > form
+    > div
+    > div
+    > div.col-md-6.col-lg-6.col-12.py-4 {
     width: 100% !important;
   }
-  #root > div > div > div > div > form > div > div > div > div > div > div > div > div > div{
+  #root
+    > div
+    > div
+    > div
+    > div
+    > form
+    > div
+    > div
+    > div
+    > div
+    > div
+    > div
+    > div
+    > div
+    > div {
     display: flex;
     align-items: start !important;
     gap: 14px !important;
     /* justify-content: space-between; */
     flex-direction: column !important;
-
   }
-  #root > div > div > div > div > form > div > div > div.container > div{
+  #root > div > div > div > div > form > div > div > div.container > div {
     flex-direction: column !important;
   }
-  .form-group select{
-width: 100% !important;
+  .form-group select {
+    width: 100% !important;
   }
-  #root > div > div.full-width-screen.padding-given > div > div > div > div{
+  #root > div > div.full-width-screen.padding-given > div > div > div > div {
     flex-direction: column;
   }
-  #root > div > div.flex-grow-1 > div > div > div.container.mt-5 > div > div > div > div{
-   
+  #root
+    > div
+    > div.flex-grow-1
+    > div
+    > div
+    > div.container.mt-5
+    > div
+    > div
+    > div
+    > div {
+    flex-direction: column !important;
+    gap: 14px;
+  }
+
+  #root > div > div.custom-width-first {
+    display: none;
+  }
+  .custom-width-last{
+    width: 100%;
+     max-width: 100% !important;
+  }
+  .utfs{
+    flex-direction: column !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cpst {
+    position: absolute;
+    right: 9px !important;
+    top: 402px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 12% !important;
+}
+.btty{
+flex-direction: column !important;
+}
+.uyts{
+  display: flex;
+  justify-content: start !important;
+  gap: 10px;
+  margin-top: 13px;
+}
+
+}
+
+@media screen and (max-width: 576px) {
+  .cpst {
+      position: absolute;
+      right: 380px !important;
+      top: 609px !important;
+      display: flex;
+      flex-direction: row;
+      gap: 7px;
+      width: 12% !important;
+      flex-wrap: nowrap;
+  }
+  #root > div > div.flex-grow-1 > div > div > div > div > div.row.g-3 > div.col-md-6.col-lg-6.col-12.d-flex.flex-column > div.pie-chart-container.d-flex.justify-content-center.mb-3 > div > div > svg {
+    position: relative;
+    left: 2px !important;
+
+
+}
+}
+
+
+
+  @media screen and (max-width: 490px) {
+    .cpst {
+        
+      right: 319px !important;
+      gap: 7px;
+      flex-direction: column;
+      width: 100% !important;
+      position: static;
+    }
+    #root > div > div.flex-grow-1 > div > div > div > div > div.row.g-3 > div > div > div{
       flex-direction: column !important;
-      gap: 14px;
+
+    }
+  
   
   }
 
- 
-  #root > div > div.custom-width-first{
-    display: none;
-  }
 
-}
-
-@media screen and (max-width:769px) {
-
-
-}
+    @media screen and (max-width: 420px) {
+      .cpst {
+          
+        right: 289px !important;
+        gap: 1px;
+        
+      }}
+  
+      
+    @media screen and (max-width: 414px) {
+      .cpst {
+          
+        right: 319px !important;
+        gap: 1px;
+        
+      }}
+      
+      @media screen and (max-width: 390px) {
+        .cpst {
+            right: 319px !important;
+            gap: 7px;
+            flex-direction: column;
+            width: 100% !important;
+            position: static;
+        }
+    }

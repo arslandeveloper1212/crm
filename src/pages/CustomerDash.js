@@ -105,7 +105,7 @@ const CustomerDash = () => {
   return (
     <div className="container-fluid">
       <div className="row" style={{ margin: "18px 0px" }}>
-        <div className='justify-content-between d-flex'>
+        <div className='justify-content-between d-flex btty'>
           <div>
             <h1 className='main-heading'>Clients Dashboard</h1>
             <span>Manage Client Data</span>
@@ -119,7 +119,7 @@ const CustomerDash = () => {
           </div>
         </div>
       </div>
-      <div className='row'>
+      <div className='row uyts'>
         <div className='col-lg-6 col-md-6 col-12'>
           <form className="d-flex">
             <input
@@ -167,7 +167,10 @@ const CustomerDash = () => {
             </ul>
           </div>
         </div>
-        <div className="col-12">
+        
+      </div>
+      <div className='row'>
+      <div className="col-12">
           <Table items={currentItems} onDelete={onDelete} />
           <Pagination
             itemsPerPage={itemsPerPage}

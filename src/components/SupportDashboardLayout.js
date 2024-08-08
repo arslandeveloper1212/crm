@@ -9,7 +9,7 @@ const SupportDashboardLayout = () => {
 
   return (
     <div className='container-fluid'>
-    <div className="d-flex">
+    <div className="d-flex utfs">
     <div className="flex-grow-1">
       <SupportDashboard />
     </div>
